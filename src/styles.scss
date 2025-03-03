@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+$darkBlue: #219799;
+$lightBlue: #AADEF3;
+$lightBlue2: #60C1DC;
+
+*{
+    font-family: 'Sen', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $lightBlue;
+}
+section{
+    margin-top: 150px;
+}
