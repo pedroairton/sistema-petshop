@@ -17,6 +17,10 @@ export class AppComponent {
   toggleMobile() {
     this.mobile === true ? (this.mobile = false) : (this.mobile = true);
   }
+  public indexUsuarios: boolean = true;
+  toggleUsuarios(value: boolean) {
+    this.indexUsuarios = value
+  }
   public consultasHoje: {
     usuario: string;
     servico: string;
@@ -62,7 +66,29 @@ export class AppComponent {
     },
     {
       tipo: 'Cachorro',
-      total: 47
+      total: 47,
+    },
+  ];
+  public usuarios: {
+    nome: string;
+    email: string;
+    numero: string;
+    endereco: string;
+    pets: number;
+  }[] = [
+    {
+      nome: 'Robertinho',
+      email: 'robertinho@inho.com',
+      numero: '81995473367',
+      endereco: 'Rua ablueble',
+      pets: 3,
+    },
+    {
+      nome: 'Voldemort',
+      email: 'voldi@morti.com',
+      numero: '81982473367',
+      endereco: 'Rua cringe',
+      pets: 2,
     },
   ];
 }

@@ -18,7 +18,7 @@
 </svg>
 
 <section class="content">
-  <div class="dashboard">
+  <div class="page-dashboard">
     <h1>DASHBOARD</h1>
     <div class="tables card">
       <div class="table">
@@ -101,3 +101,52 @@
   </div>
   <router-outlet></router-outlet>
 </section>
+<section class="content">
+  <div class="page-usuarios">
+    <h1>USUÁRIOS</h1>
+    <div class="content-usuarios">
+      <div class="index-usuarios">
+        <h2 style="border-radius: 15px 0 0 0;" [ngStyle]="{'background-color' : indexUsuarios ? '#d7d7d7' : ''}" (click)="toggleUsuarios(true)">TODOS OS USUÁRIOS</h2>
+        <h2 style="border-radius: 0 15px 0 0;" [ngStyle]="{'background-color' : indexUsuarios ? '' : '#d7d7d7'}" (click)="toggleUsuarios(false)">NOVO USUÁRIO</h2>
+      </div>
+      <div class="table" [ngClass]="{'ativo': indexUsuarios === true}">
+        <table>
+          <thead>
+            <tr>
+              <th>Del.</th>
+              <th>Nome do Usuário</th>
+              <th>Email do Usuário</th>
+              <th>Num. do Usuário</th>
+              <th>Endereço</th>
+              <th>Pets</th>
+              <th>Abrir</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (usuario of usuarios; track usuario) {
+              <tr>
+                <td>Del.</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.numero }}</td>
+                <td>{{ usuario.endereco }}</td>
+                <td>{{ usuario.pets }}</td>
+                <td>-></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="novo-usuario" [ngClass]="{'ativo': indexUsuarios === false}">
+        <form>
+          <input type="text" name="nome" placeholder="Nome">
+          <input type="email" name="email" placeholder="Email">
+          <input type="text" name="numero" placeholder="Número de telefone">
+          <input type="text" name="endereco" placeholder="Endereço">
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
