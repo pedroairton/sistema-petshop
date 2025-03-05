@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +11,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title: string = 'petshop';
   public mobile: boolean = false;
+
+  #apiService = inject(ApiService)
+  public dataUsuarios: any
+
   toggleMobile() {
     this.mobile === true ? (this.mobile = false) : (this.mobile = true);
   }
@@ -91,4 +95,14 @@ export class AppComponent {
       pets: 2,
     },
   ];
+  ngOnInit(): void {
+    this.#apiService.getUsuarios().subscribe(
+      (response) => {
+        this.dataUsuarios = response
+        console.log(this.dataUsuarios)
+      }, (err) => {
+        console.error('Erro:', err)
+      }
+    )
+  }
 }
