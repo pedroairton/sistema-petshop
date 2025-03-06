@@ -118,8 +118,8 @@
               <th>Email do Usuário</th>
               <th>Num. do Usuário</th>
               <th>Endereço</th>
+              <th>Editar</th>
               <th>Pets</th>
-              <th>Abrir</th>
             </tr>
           </thead>
           <tbody>
@@ -130,7 +130,7 @@
                 <td>{{ usuario.email }}</td>
                 <td>{{ usuario.numero }}</td>
                 <td>{{ usuario.endereco }}</td>
-                <td>{{ usuario.pets }}</td>
+                <td>Edit.</td>
                 <td>-></td>
               </tr>
             }
@@ -150,16 +150,85 @@
   </div>
 </section>
 <section class="content">
-  <div class="page-usuario">
-    <h1>DETALHES DO USUÁRIO</h1>
-    <div class="content-usuario">
-      <div class="infos-usuario">
-        <h2>Nome usuário</h2>
-        <h3>Telefone</h3>
-        <h3>Email</h3>
-        <h3>Endereço</h3>
-        <h3>Pets Registrados: 3</h3>
-      </div>
+  <div class="page-pet">
+    <h1>Pets - Robertinho</h1> 
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Del.</th>
+            <th>Tipo Pet</th>
+            <th>Sexo do pet</th>
+            <th>Nome do Pet</th>
+            <th>Peso (kg)</th>
+            <th>Idade do Pet</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Del.</td>
+            <td>Gato</td>
+            <td>Masculino</td>
+            <td>Bingau</td>
+            <td>5kg</td>
+            <td>2 anos</td>
+            <!-- editar e ver agendamentos -->
+            <td>/ -></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="content">
+  <div class="page-agendamentos">
+    <h1>AGENDAMENTOS</h1>
+    <div class="table-agendamentos">
+      <h2>Próximos Agendamentos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Del.</th>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Del.</td>
+            <td>Robertinho</td>
+            <td>Tosa</td>
+            <td>06/03/2025</td>
+            <td>14h30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-agendamentos">
+      <h2>Últimos Agendamentos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Del.</th>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Del.</td>
+            <td>Robertinho</td>
+            <td>Tosa</td>
+            <td>06/03/2025</td>
+            <td>14h30</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
