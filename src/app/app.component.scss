@@ -194,15 +194,15 @@ $lightBlue2: #60c1dc;
             height: 40px;
             border: none;
           }
-          input {
-            padding-left: 1rem;
-            border-radius: 2px;
-            transition: 0.3s;
-            outline: solid 2px transparent;
-            &:focus-visible {
-              outline: solid 2px $darkBlue;
-            }
-          }
+          // input {
+          //   padding-left: 1rem;
+          //   border-radius: 2px;
+          //   transition: 0.3s;
+          //   outline: solid 2px transparent;
+          //   &:focus-visible {
+          //     outline: solid 2px $darkBlue;
+          //   }
+          // }
           button {
             border-radius: 2px;
             background-color: $darkBlue;
@@ -329,15 +329,15 @@ $lightBlue2: #60c1dc;
       height: 40px;
       border: none;
     }
-    input {
-      padding-left: 1rem;
-      border-radius: 2px;
-      transition: 0.3s;
-      outline: solid 2px transparent;
-      &:focus-visible {
-        outline: solid 2px $lightBlue;
-      }
-    }
+    // input {
+    //   padding-left: 1rem;
+    //   border-radius: 2px;
+    //   transition: 0.3s;
+    //   outline: solid 2px transparent;
+    //   &:focus-visible {
+    //     outline: solid 2px $lightBlue;
+    //   }
+    // }
     button {
       border-radius: 2px;
       background-color: $lightBlue;

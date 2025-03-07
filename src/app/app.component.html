@@ -139,10 +139,22 @@
       </div>
       <div class="novo-usuario" [ngClass]="{'ativo': indexUsuarios === false}">
         <form>
-          <input type="text" name="nome" placeholder="Nome">
-          <input type="email" name="email" placeholder="Email">
-          <input type="text" name="numero" placeholder="Número de telefone">
-          <input type="text" name="endereco" placeholder="Endereço">
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" name="nome" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" name="email" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Número de Telefone</mat-label>
+            <input matInput type="text" name="numero" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Endereço</mat-label>
+            <input matInput type="text" name="endereco" required>
+          </mat-form-field>
           <button type="submit">Enviar</button>
         </form>
       </div>
@@ -184,6 +196,7 @@
 <section class="content">
   <div class="page-agendamentos">
     <h1>AGENDAMENTOS</h1>
+    <button (click)="openDialog()">Abrir dialog (teste)</button>
     <div class="table-agendamentos">
       <h2>Próximos Agendamentos</h2>
       <table>
