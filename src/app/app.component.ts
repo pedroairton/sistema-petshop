@@ -11,19 +11,19 @@ import { ApiService } from './services/api.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title: string = 'petshop';
   public mobile: boolean = false;
 
-  #apiService = inject(ApiService)
-  public dataUsuarios: any
+  #apiService = inject(ApiService);
+  public dataUsuarios: any;
 
   toggleMobile() {
     this.mobile === true ? (this.mobile = false) : (this.mobile = true);
   }
   public indexUsuarios: boolean = true;
   toggleUsuarios(value: boolean) {
-    this.indexUsuarios = value
+    this.indexUsuarios = value;
   }
   public consultasHoje: {
     usuario: string;
@@ -98,11 +98,12 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.#apiService.getUsuarios().subscribe(
       (response) => {
-        this.dataUsuarios = response
-        console.log(this.dataUsuarios)
-      }, (err) => {
-        console.error('Erro:', err)
+        this.dataUsuarios = response;
+        console.log(this.dataUsuarios);
+      },
+      (err) => {
+        console.error('Erro:', err);
       }
-    )
+    );
   }
 }
