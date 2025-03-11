@@ -1,0 +1,85 @@
+<div class="page-usuarios">
+    <h1>USUÁRIOS</h1>
+    <div class="content-usuarios">
+      <div class="index-usuarios">
+        <h2
+          style="border-radius: 15px 0 0 0"
+          [ngStyle]="{ 'background-color': indexUsuarios ? '#d7d7d7' : '' }"
+          (click)="toggleUsuarios(true)"
+        >
+          TODOS OS USUÁRIOS
+        </h2>
+        <h2
+          style="border-radius: 0 15px 0 0"
+          [ngStyle]="{ 'background-color': indexUsuarios ? '' : '#d7d7d7' }"
+          (click)="toggleUsuarios(false)"
+        >
+          NOVO USUÁRIO
+        </h2>
+      </div>
+      <div class="table" [ngClass]="{ ativo: indexUsuarios === true }">
+        <table>
+          <thead>
+            <tr>
+              <th>Del.</th>
+              <th>Nome do Usuário</th>
+              <th>Email do Usuário</th>
+              <th>Num. do Usuário</th>
+              <th>Endereço</th>
+              <th>Editar</th>
+              <th>Pets</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (usuario of usuarios; track usuario) {
+            <tr>
+              <td>Del.</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.numero }}</td>
+              <td>{{ usuario.endereco }}</td>
+              <td>Edit.</td>
+              <td>
+                <a href="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-caret-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753"
+                    />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="novo-usuario" [ngClass]="{ ativo: indexUsuarios === false }">
+        <form>
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" name="nome" required />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" name="email" required />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Número de Telefone</mat-label>
+            <input matInput type="text" name="numero" required />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Endereço</mat-label>
+            <input matInput type="text" name="endereco" required />
+          </mat-form-field>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>

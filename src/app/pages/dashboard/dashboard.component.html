@@ -1,0 +1,81 @@
+<div class="page-dashboard">
+    <h1>DASHBOARD</h1>
+    <div class="tables card">
+      <div class="table">
+        <div class="table-title">
+          <h2>AINDA HOJE</h2>
+          <h3>TOTAL: {{ consultasHoje.length }}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Serviço</th>
+              <th>Cliente</th>
+              <th>Horário de Início</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of consultasHoje; track item) {
+            <tr>
+              <td>{{ item.servico }}</td>
+              <td>{{ item.usuario }}</td>
+              <td>{{ item.horario_inicio }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="table">
+        <div class="table-title">
+          <h2>ÚLTIMOS ATENDIMENTOS</h2>
+          <h3>TOTAL: {{ consultasHoje.length }}</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Serviço</th>
+              <th>Cliente</th>
+              <th>Horário de Início</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of consultasHoje; track item) {
+            <tr>
+              <td>{{ item.servico }}</td>
+              <td>{{ item.usuario }}</td>
+              <td>{{ item.horario_inicio }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="usuarios card">
+      <div class="title">
+        <h2>USUÁRIOS CADASTRADOS</h2>
+      </div>
+      <h2 class="total-usuarios">{{ totalUsuarios }}</h2>
+    </div>
+    <div class="servicos card">
+      <h2 class="title">SERVIÇOS MAIS AGENDADOS</h2>
+      <div class="servicos-content">
+        @for (servico of servicosTotal; track servico) {
+        <div class="servico">
+          <h3>{{ servico.servico }}</h3>
+          <h3>{{ servico.total }}</h3>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="animais card">
+      <h2 class="title">ANIMAIS MAIS ATENDIDOS</h2>
+      <div class="animais-content">
+        @for (animal of animaisTotal; track animal) {
+        <div class="animal">
+          <h3>{{ animal.tipo }}</h3>
+          <h3>{{ animal.total }}</h3>
+        </div>
+        }
+      </div>
+    </div>
+  </div>

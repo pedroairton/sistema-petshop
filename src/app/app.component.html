@@ -18,6 +18,10 @@
 </svg>
 
 <section class="content">
+  <router-outlet></router-outlet>
+</section>
+
+<section class="content">
   <div class="page-dashboard">
     <h1>DASHBOARD</h1>
     <div class="tables card">
@@ -91,25 +95,36 @@
       <h2 class="title">ANIMAIS MAIS ATENDIDOS</h2>
       <div class="animais-content">
         @for (animal of animaisTotal; track animal) {
-          <div class="animal">
-            <h3>{{ animal.tipo }}</h3>
-            <h3>{{ animal.total }}</h3>
-          </div>
+        <div class="animal">
+          <h3>{{ animal.tipo }}</h3>
+          <h3>{{ animal.total }}</h3>
+        </div>
         }
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
 </section>
 <section class="content">
   <div class="page-usuarios">
     <h1>USUÁRIOS</h1>
     <div class="content-usuarios">
       <div class="index-usuarios">
-        <h2 style="border-radius: 15px 0 0 0;" [ngStyle]="{'background-color' : indexUsuarios ? '#d7d7d7' : ''}" (click)="toggleUsuarios(true)">TODOS OS USUÁRIOS</h2>
-        <h2 style="border-radius: 0 15px 0 0;" [ngStyle]="{'background-color' : indexUsuarios ? '' : '#d7d7d7'}" (click)="toggleUsuarios(false)">NOVO USUÁRIO</h2>
+        <h2
+          style="border-radius: 15px 0 0 0"
+          [ngStyle]="{ 'background-color': indexUsuarios ? '#d7d7d7' : '' }"
+          (click)="toggleUsuarios(true)"
+        >
+          TODOS OS USUÁRIOS
+        </h2>
+        <h2
+          style="border-radius: 0 15px 0 0"
+          [ngStyle]="{ 'background-color': indexUsuarios ? '' : '#d7d7d7' }"
+          (click)="toggleUsuarios(false)"
+        >
+          NOVO USUÁRIO
+        </h2>
       </div>
-      <div class="table" [ngClass]="{'ativo': indexUsuarios === true}">
+      <div class="table" [ngClass]="{ ativo: indexUsuarios === true }">
         <table>
           <thead>
             <tr>
@@ -124,36 +139,51 @@
           </thead>
           <tbody>
             @for (usuario of usuarios; track usuario) {
-              <tr>
-                <td>Del.</td>
-                <td>{{ usuario.nome }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.numero }}</td>
-                <td>{{ usuario.endereco }}</td>
-                <td>Edit.</td>
-                <td>-></td>
-              </tr>
+            <tr>
+              <td>Del.</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.numero }}</td>
+              <td>{{ usuario.endereco }}</td>
+              <td>Edit.</td>
+              <td>
+                <a href="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-caret-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753"
+                    />
+                  </svg>
+                </a>
+              </td>
+            </tr>
             }
           </tbody>
         </table>
       </div>
-      <div class="novo-usuario" [ngClass]="{'ativo': indexUsuarios === false}">
+      <div class="novo-usuario" [ngClass]="{ ativo: indexUsuarios === false }">
         <form>
           <mat-form-field>
             <mat-label>Nome</mat-label>
-            <input matInput type="text" name="nome" required>
+            <input matInput type="text" name="nome" required />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput type="email" name="email" required>
+            <input matInput type="email" name="email" required />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Número de Telefone</mat-label>
-            <input matInput type="text" name="numero" required>
+            <input matInput type="text" name="numero" required />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Endereço</mat-label>
-            <input matInput type="text" name="endereco" required>
+            <input matInput type="text" name="endereco" required />
           </mat-form-field>
           <button type="submit">Enviar</button>
         </form>
@@ -163,7 +193,7 @@
 </section>
 <section class="content">
   <div class="page-pet">
-    <h1>Pets - Robertinho</h1> 
+    <h1>Pets - Robertinho</h1>
     <div class="table">
       <table>
         <thead>
@@ -186,7 +216,36 @@
             <td>5kg</td>
             <td>2 anos</td>
             <!-- editar e ver agendamentos -->
-            <td>/ -></td>
+            <td style="display: flex; justify-content: space-evenly; gap: 8px">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="#000"
+                class="bi bi-pen"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"
+                />
+              </svg>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="#000"
+                class="bi bi-eye"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"
+                />
+                <path
+                  d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"
+                />
+              </svg>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -249,14 +308,13 @@
   <div class="page-login">
     <div class="img-logo">
       <!-- <img src="" alt=""> -->
-       <h1>Logo</h1>
+      <h1>Logo</h1>
       <h1>PAINEL DE ADMINISTRADOR</h1>
     </div>
     <form>
-      <input type="text" name="login" placeholder="Digite seu login">
-      <input type="password" name="senha" placeholder="Digite sua senha">
+      <input type="text" name="login" placeholder="Digite seu login" />
+      <input type="password" name="senha" placeholder="Digite sua senha" />
       <button type="submit">Login</button>
     </form>
   </div>
 </section>
-
