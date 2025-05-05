@@ -44,6 +44,13 @@ $lightBlue2: #60c1dc;
                 font-size: 1.15rem;
                 padding: 8px 0;
                 text-align: center;
+                svg{
+                  cursor: pointer;
+                  transition: .3s;
+                  &:hover{
+                    scale: 1.1;
+                  }
+                }
               }
               &:nth-child(even) {
                 background-color: #d7d7d7;

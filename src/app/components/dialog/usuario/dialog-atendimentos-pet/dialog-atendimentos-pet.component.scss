@@ -1,26 +1,33 @@
-table {
-  width: 100%;
-  min-width: 900px;
-  thead {
-    tr {
-      background-color: #d0d0d0;
-      th {
-        font-size: 1.15rem;
-        padding: 12px 0;
-        text-transform: uppercase;
+.dialog-atendimentos-pet{
+  padding: 1.5rem;
+  h2{
+    margin-bottom: 2rem;
+  }
+  table {
+    width: 100%;
+    min-width: 900px;
+    thead {
+      tr {
+        background-color: #d0d0d0;
+        th {
+          font-size: 1.15rem;
+          padding: 12px 0;
+          text-transform: uppercase;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          font-size: 1.05rem;
+          padding: 8px 0;
+          text-align: center;
+        }
+        &:nth-child(even) {
+          background-color: #d7d7d7;
+        }
       }
     }
   }
-  tbody {
-    tr {
-      td {
-        font-size: 1.05rem;
-        padding: 8px 0;
-        text-align: center;
-      }
-      &:nth-child(even) {
-        background-color: #d7d7d7;
-      }
-    }
-  }
+
 }

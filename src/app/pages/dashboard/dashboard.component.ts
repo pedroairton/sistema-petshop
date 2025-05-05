@@ -14,7 +14,7 @@ export class DashboardComponent {
     horario_inicio: string;
   }[] = [
     {
-      usuario: 'Robertinho',
+      usuario: 'Roberto',
       servico: 'Consulta',
       horario_inicio: '12h30',
     },

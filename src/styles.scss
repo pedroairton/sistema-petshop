@@ -23,8 +23,15 @@ h1 {
   text-align: center;
   font-size: 2rem;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
 .cdk-overlay-container{
   .cdk-overlay-pane.mat-mdc-dialog-panel {
-    max-width: 900px;
+    max-width: 100%;
   }
+}
+.off{
+  display: none;
 }

@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog,MatDialogModule } from '@angular/material/dialog';
 import { DialogFormUsuarioComponent } from './components/dialog/usuario/dialog-form-usuario/dialog-form-usuario.component';
+import { response } from 'express';
 
 @Component({
   selector: 'app-root',
@@ -22,13 +23,10 @@ import { DialogFormUsuarioComponent } from './components/dialog/usuario/dialog-f
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   panelOpenState = false;
   title: string = 'petshop';
   public mobile: boolean = false;
-
-  #apiService = inject(ApiService);
-  public dataUsuarios: any;
 
   constructor(private dialog: MatDialog) {}
   openDialog(){
@@ -113,15 +111,4 @@ export class AppComponent implements OnInit {
       pets: 2,
     },
   ];
-  ngOnInit(): void {
-    // this.#apiService.getUsuarios().subscribe(
-    //   (response) => {
-    //     this.dataUsuarios = response;
-    //     console.log(this.dataUsuarios);
-    //   },
-    //   (err) => {
-    //     console.error('Erro:', err);
-    //   }
-    // );
-  }
 }

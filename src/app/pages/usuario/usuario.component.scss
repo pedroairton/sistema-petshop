@@ -24,6 +24,13 @@
               font-size: 1.15rem;
               padding: 8px 0;
               text-align: center;
+              svg{
+                cursor: pointer;
+                transition: .3s;
+                &:hover{
+                  scale: 1.1;
+                }
+              }
             }
             background-color: #f0f0f0;
             &:nth-child(even) {
