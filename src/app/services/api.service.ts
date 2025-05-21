@@ -14,4 +14,10 @@ export class ApiService {
   getUsuarios(): Observable<any>{
     return this.http.get(this.apiUrl+'/usuarios')
   }
+  getAgendaNext(): Observable<any>{
+    return this.http.get(this.apiUrl+'/agendamento/next')
+  }
+  getAgendaPrev(): Observable<any>{
+    return this.http.get(this.apiUrl+'/agendamento/prev')
+  }
 }
