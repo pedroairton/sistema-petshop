@@ -3,103 +3,153 @@ $darkBlue2: #1a7778;
 $lightBlue: #aadef3;
 $lightBlue2: #60c1dc;
 .page-usuarios {
-    padding: 80px;
-    .content-usuarios {
-      border-radius: 15px;
-      background-color: #f0f0f0;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      margin-top: 2rem;
-      .index-usuarios {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border-bottom: solid 1px black;
-        h2 {
-          padding: 2rem;
-          cursor: pointer;
-          flex: 1;
-          text-align: center;
-          transition: 0.3s;
-        }
-      }
-      .table {
-        display: none;
-        // display: flex;
-        padding: 80px;
-        table {
-          width: 100%;
-          thead {
-            tr {
-              background-color: #d0d0d0;
-              th {
-                font-size: 1.35rem;
-                padding: 12px 0;
-                text-transform: uppercase;
-              }
-            }
-          }
-          tbody {
-            tr {
-              td {
-                font-size: 1.15rem;
-                padding: 8px 0;
-                text-align: center;
-                svg{
-                  cursor: pointer;
-                  transition: .3s;
-                  &:hover{
-                    scale: 1.1;
-                  }
-                }
-              }
-              &:nth-child(even) {
-                background-color: #d7d7d7;
-              }
-            }
-          }
-        }
-      }
-      .novo-usuario {
-        display: none;
-        // display: flex;
-        justify-content: center;
-        padding: 80px;
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          width: 400px;
-          input,
-          button {
-            width: 100%;
-            height: 40px;
-            border: none;
-          }
-          // input {
-          //   padding-left: 1rem;
-          //   border-radius: 2px;
-          //   transition: 0.3s;
-          //   outline: solid 2px transparent;
-          //   &:focus-visible {
-          //     outline: solid 2px $darkBlue;
-          //   }
-          // }
-          button {
-            border-radius: 2px;
-            background-color: $darkBlue;
-            color: white;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: 0.3s;
-            &:hover {
-              background-color: $darkBlue2;
-            }
-          }
-        }
-      }
-      .ativo {
-        display: flex;
-        rotate: 0deg;
+  padding: 80px;
+  .content-usuarios {
+    border-radius: 15px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    .index-usuarios {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-bottom: solid 1px black;
+      h2 {
+        padding: 2rem;
+        cursor: pointer;
+        flex: 1;
+        text-align: center;
+        transition: 0.3s;
       }
     }
+    .table {
+      display: none;
+      // display: flex;
+      flex-direction: column;
+      gap: 80px;
+      padding: 80px 2rem;
+      .filtro-busca {
+        align-self: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        input[type="text"] {
+          padding-left: 1rem;
+          height: 35px;
+          width: 350px;
+          font-size: 1.1rem;
+          background-color: transparent;
+          border: none;
+          border-bottom: solid 1px #b0b0b0;
+          transition: 0.3s ease;
+          &:focus-visible {
+            outline: none;
+            background-color: #d7d7d7;
+          }
+        }
+        .icon-busca {
+          position: absolute;
+          right: 5px;
+        }
+        .btn-reset {
+          cursor: pointer;
+          margin-left: 2rem;
+          width: 40px;
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          border-bottom: solid 1px #b0b0b0;
+          // border-radius: 16px;
+          transition: 0.3s;
+          &:hover {
+            background-color: #d7d7d7;
+          }
+        }
+      }
+      table {
+        width: 100%;
+        thead {
+          tr {
+            background-color: #d0d0d0;
+            th {
+              font-size: 1.25rem;
+              padding: 12px 0;
+              text-transform: uppercase;
+              max-width: 200px;
+            }
+          }
+        }
+        tbody {
+          tr {
+            td {
+              max-width: 200px;
+              font-size: 1rem;
+              padding: 8px 0;
+              text-align: center;
+              svg {
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover {
+                  scale: 1.1;
+                }
+              }
+            }
+            &:nth-child(even) {
+              background-color: #d7d7d7;
+            }
+          }
+        }
+      }
+    }
+    .novo-usuario {
+      display: none;
+      // display: flex;
+      justify-content: center;
+      padding: 80px;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 400px;
+        input,
+        button {
+          width: 100%;
+          height: 40px;
+          border: none;
+        }
+        // input {
+        //   padding-left: 1rem;
+        //   border-radius: 2px;
+        //   transition: 0.3s;
+        //   outline: solid 2px transparent;
+        //   &:focus-visible {
+        //     outline: solid 2px $darkBlue;
+        //   }
+        // }
+        button {
+          border-radius: 2px;
+          background-color: $darkBlue;
+          color: white;
+          font-size: 1.25rem;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            background-color: $darkBlue2;
+          }
+          &:disabled {
+            background-color: #b0b0b0;
+            cursor: default;
+          }
+        }
+      }
+    }
+    .ativo {
+      display: flex;
+      rotate: 0deg;
+    }
   }
+}

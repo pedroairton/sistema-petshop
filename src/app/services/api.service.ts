@@ -1,23 +1,51 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = "http://localhost:8000"
-  
-  constructor(private http: HttpClient) { }
-  
+  private apiUrl = 'http://localhost:8000';
+
+  constructor(private http: HttpClient) {}
+
   // get
-  getUsuarios(): Observable<any>{
-    return this.http.get(this.apiUrl+'/usuarios')
+  getUsuarios(): Observable<any> {
+    return this.http.get(this.apiUrl + '/api/usuarios');
   }
-  getAgendaNext(): Observable<any>{
-    return this.http.get(this.apiUrl+'/agendamento/next')
+  getUsuario(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + '/api/usuarios/' + id);
   }
-  getAgendaPrev(): Observable<any>{
-    return this.http.get(this.apiUrl+'/agendamento/prev')
+  searchUsuario(nome: string): Observable<any> {
+    return this.http.get(this.apiUrl + '/api/busca-user/?nome=' + nome);
+  }
+  getAgendaNext(): Observable<any> {
+    return this.http.get(this.apiUrl + '/agendamento/next');
+  }
+  getAgendaPrev(): Observable<any> {
+    return this.http.get(this.apiUrl + '/agendamento/prev');
+  }
+  // post
+  createUsuario(userData: any): Observable<any> {
+    return this.http
+      .post(this.apiUrl + '/api/usuarios', userData)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Ocorreu um erro:', error.error.message);
+    } else {
+      console.error(
+        `Backend retornou código: ${error.status},` + `body: ${error.error}`
+      );
+    }
+    return throwError(
+      'Algum erro ocorreu, tente novamente.'
+    )
   }
 }
