@@ -34,6 +34,9 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
+  createPet(petData: any) {
+    return this.http.post(this.apiUrl+'/api/usuarios/'+petData.id_dono, petData)
+  }
 
 
   private handleError(error: HttpErrorResponse) {

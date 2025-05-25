@@ -6,10 +6,10 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { AgendaComponent } from './pages/agenda/agenda.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuarios/:id', component: UsuarioComponent },
-  { path: 'agenda', component: AgendaComponent },
+  { path: 'login', component: LoginComponent, title: 'Petshop - Login' },
+  { path: 'dashboard', component: DashboardComponent, title: 'Petshop - Dashboard' },
+  { path: 'usuarios', component: UsuariosComponent, title: 'Petshop - Usuários' },
+  { path: 'usuarios/:id', component: UsuarioComponent, title: 'Petshop - Usuário' },
+  { path: 'agenda', component: AgendaComponent, title: 'Petshop - Agenda' },
 
 ];

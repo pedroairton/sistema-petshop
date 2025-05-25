@@ -29,7 +29,16 @@ export class UsuariosComponent implements OnInit {
   submitUser() {
     if (this.form.valid) {
       console.log(this.form);
-      this.newUser(this.form.value)
+      this.#apiService.createUsuario(this.form.value).subscribe(
+      response => {
+        console.log('Formulário enviado com sucesso', response)
+        window.alert('Usuário Cadastrado')
+        this.loadUsers()
+      }, error => {
+        console.error('Erro:', error);
+        
+      }
+    )
     } else {
       console.log('Form inválido');
     }
@@ -50,18 +59,6 @@ export class UsuariosComponent implements OnInit {
         console.error('Erro:', err);
       }
     );
-  }
-  newUser(userData: any){
-    this.#apiService.createUsuario(userData).subscribe(
-      response => {
-        console.log('Formulário enviado com sucesso', response)
-        window.alert('Formulário enviado')
-        this.loadUsers()
-      }, error => {
-        console.error('Erro:', error);
-        
-      }
-    )
   }
   filterUser(event: Event): void {
     const inputValue = event.target as HTMLInputElement;

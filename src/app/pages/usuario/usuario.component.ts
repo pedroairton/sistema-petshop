@@ -1,12 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DialogAtendimentosPetComponent } from '../../components/dialog/usuario/dialog-atendimentos-pet/dialog-atendimentos-pet.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormField } from '@angular/material/form-field';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { response } from 'express';
 
 @Component({
   selector: 'app-usuario',
-  imports: [RouterModule],
+  imports: [RouterModule, MatFormField, MatInputModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.scss',
 })
@@ -14,6 +19,13 @@ export class UsuarioComponent implements OnInit {
   id?: number;
   dados: any
   #apiService = inject(ApiService);
+  form = new FormGroup({
+    nome: new FormControl('', Validators.required),
+    genero: new FormControl('', Validators.required),
+    data_nascimento: new FormControl('', Validators.required),
+    tipo_animal: new FormControl('', Validators.required),
+    raca: new FormControl('', Validators.required),
+  })
 
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   openDialog() {
@@ -23,6 +35,45 @@ export class UsuarioComponent implements OnInit {
         maxWidth: '100%',
         width: '1600px',
       };
+  }
+  submitPet(){
+    if(this.form.valid){
+      console.log(this.form)
+      const petData = {
+        ...this.form.value,
+        id_dono: this.id
+      }
+      // return console.log(petData)
+      this.#apiService.createPet(petData).subscribe(
+      response => {
+        console.log('Formulário enviado com sucesso', response);
+        window.alert("Pet cadastrado com sucesso")
+        if(this.id){
+          this.#apiService.getUsuario(this.id).subscribe(
+            (response) => {
+              this.dados = response
+              console.log(this.dados);
+            },
+            (error) => {
+              console.error('Erro:', error);
+            }
+          );
+        }
+      }, error => {
+        console.error('Erro:', error)
+      }
+    )
+    }
+  }
+  newPet(petData: any){
+    // this.#apiService.createPet(petData, this.id).subscribe(
+    //   response => {
+    //     console.log('Formulário enviado com sucesso', response);
+        
+    //   }, error => {
+
+    //   }
+    // )
   }
   ngOnInit(): void {
     this.route.paramMap.subscribe((par: any) => {

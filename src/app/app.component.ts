@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog,MatDialogModule } from '@angular/material/dialog';
 import { DialogFormUsuarioComponent } from './components/dialog/usuario/dialog-form-usuario/dialog-form-usuario.component';
-import { response } from 'express';
 
 @Component({
   selector: 'app-root',

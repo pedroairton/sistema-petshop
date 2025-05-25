@@ -4,6 +4,23 @@ $darkBlue2: #1a7778;
 $lightBlue: #aadef3;
 $lightBlue2: #60c1dc;
 
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.select-overrides((
+    panel-background-color: #f0f0f0,
+  ));
+  --mat-option-selected-state-layer-color: #c0c0c0;
+  --mat-option-hover-state-layer-color: #d0d0d0
+}
+mat-option{
+  transition: .3s;
+  &:hover{
+    background-color: #b0b0b0;
+  }
+}
+
 * {
   font-family: "Sen", sans-serif;
   margin: 0;
