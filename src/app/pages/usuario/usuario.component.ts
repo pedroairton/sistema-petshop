@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { DialogAtendimentosPetComponent } from '../../components/dialog/usuario/dialog-atendimentos-pet/dialog-atendimentos-pet.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +12,7 @@ import { response } from 'express';
 
 @Component({
   selector: 'app-usuario',
-  imports: [RouterModule, MatFormField, MatInputModule, MatSelectModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, MatFormField, MatInputModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.scss',
 })
@@ -35,6 +36,10 @@ export class UsuarioComponent implements OnInit {
         maxWidth: '100%',
         width: '1600px',
       };
+  }
+  public indexUsuarios: boolean = true;
+  toggleUsuarios(value: boolean) {
+    this.indexUsuarios = value;
   }
   submitPet(){
     if(this.form.valid){
@@ -64,16 +69,6 @@ export class UsuarioComponent implements OnInit {
       }
     )
     }
-  }
-  newPet(petData: any){
-    // this.#apiService.createPet(petData, this.id).subscribe(
-    //   response => {
-    //     console.log('Formulário enviado com sucesso', response);
-        
-    //   }, error => {
-
-    //   }
-    // )
   }
   ngOnInit(): void {
     this.route.paramMap.subscribe((par: any) => {

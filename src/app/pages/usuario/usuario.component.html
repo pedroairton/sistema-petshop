@@ -2,10 +2,22 @@
   <h1>Pets - {{ dados.usuario.nome }}</h1>
   <div class="content-usuario">
     <div class="index-usuario">
-      <h2 style="border-radius: 15px 0 0 0">TODOS OS PETS</h2>
-      <h2 style="border-radius: 0 15px 0 0">NOVO PET</h2>
+      <h2
+        style="border-radius: 15px 0 0 0"
+        [ngStyle]="{ 'background-color': indexUsuarios ? '#d7d7d7' : '' }"
+        (click)="toggleUsuarios(true)"
+      >
+        TODOS OS PETS
+      </h2>
+      <h2
+        style="border-radius: 0 15px 0 0"
+        [ngStyle]="{ 'background-color': indexUsuarios ? '' : '#d7d7d7' }"
+        (click)="toggleUsuarios(false)"
+      >
+        NOVO PET
+      </h2>
     </div>
-    <div class="table">
+    <div class="table" [ngClass]="{ ativo: indexUsuarios === true }">
       @if (dados.pets.length > 0) {
       <table>
         <thead>
@@ -89,7 +101,7 @@
       </h2>
       }
     </div>
-    <div class="novo-pet">
+    <div class="novo-pet" [ngClass]="{ ativo: indexUsuarios === false }">
       <form [formGroup]="form">
         <mat-form-field>
           <mat-label>Nome</mat-label>
