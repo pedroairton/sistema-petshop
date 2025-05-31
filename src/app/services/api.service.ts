@@ -20,12 +20,15 @@ export class ApiService {
   searchUsuario(nome: string): Observable<any> {
     return this.http.get(this.apiUrl + '/api/busca-user/?nome=' + nome);
   }
-  getAgendaNext(): Observable<any> {
-    return this.http.get(this.apiUrl + '/agendamento/next');
+  getAgenda(): Observable<any> {
+    return this.http.get(this.apiUrl + '/agendamento');
   }
-  getAgendaPrev(): Observable<any> {
-    return this.http.get(this.apiUrl + '/agendamento/prev');
-  }
+  // getAgendaNext(): Observable<any> {
+  //   return this.http.get(this.apiUrl + '/agendamento/next');
+  // }
+  // getAgendaPrev(): Observable<any> {
+  //   return this.http.get(this.apiUrl + '/agendamento/prev');
+  // }
   // post
   createUsuario(userData: any): Observable<any> {
     return this.http

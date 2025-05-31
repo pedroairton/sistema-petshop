@@ -8,7 +8,6 @@ import { ApiService } from '../../services/api.service';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { response } from 'express';
 
 @Component({
   selector: 'app-usuario',

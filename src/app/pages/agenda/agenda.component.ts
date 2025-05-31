@@ -14,6 +14,7 @@ export class AgendaComponent implements OnInit {
 
   public nextAgenda: any
   public prevAgenda: any
+  public agenda: any
   constructor(private dialog: MatDialog) {}
   openDialog() {
     this.dialog.open(DialogAgendamentoComponent),
@@ -22,24 +23,35 @@ export class AgendaComponent implements OnInit {
       };
   }
   loadAgenda() {
-    this.#apiService.getAgendaNext().subscribe(
+    this.#apiService.getAgenda().subscribe(
       (reponse) => {
-        this.nextAgenda = reponse;
+        this.prevAgenda = reponse.prevAgendamentos;
+        this.nextAgenda = reponse.nextAgendamentos;
         console.log('proximos', this.nextAgenda)
-      },
-      (err) => {
-        console.error('Erro:', err);
-      }
-    );
-    this.#apiService.getAgendaPrev().subscribe(
-      (reponse) => {
-        this.prevAgenda = reponse;
         console.log('ultimos', this.prevAgenda)
       },
       (err) => {
         console.error('Erro:', err);
       }
     );
+    // this.#apiService.getAgendaNext().subscribe(
+    //   (reponse) => {
+    //     this.nextAgenda = reponse;
+    //     console.log('proximos', this.nextAgenda)
+    //   },
+    //   (err) => {
+    //     console.error('Erro:', err);
+    //   }
+    // );
+    // this.#apiService.getAgendaPrev().subscribe(
+    //   (reponse) => {
+    //     this.prevAgenda = reponse;
+    //     console.log('ultimos', this.prevAgenda)
+    //   },
+    //   (err) => {
+    //     console.error('Erro:', err);
+    //   }
+    // );
   }
   ngOnInit(): void {
     this.loadAgenda();
