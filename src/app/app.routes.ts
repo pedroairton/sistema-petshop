@@ -4,6 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { AgendaComponent } from './pages/agenda/agenda.component';
+import { ServicosComponent } from './pages/servicos/servicos.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, title: 'Petshop - Login' },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent, title: 'Petshop - Usuários' },
   { path: 'usuarios/:id', component: UsuarioComponent, title: 'Petshop - Usuário' },
   { path: 'agenda', component: AgendaComponent, title: 'Petshop - Agenda' },
+  { path: 'servicos', component: ServicosComponent, title: 'Petshop - Serviços' },
 
 ];

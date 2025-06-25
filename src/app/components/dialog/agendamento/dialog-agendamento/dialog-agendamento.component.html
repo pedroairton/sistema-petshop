@@ -1,20 +1,23 @@
-<h2 mat-dialog-title>Preencha o Formulário de Agendamento</h2>
-
-<div mat-dialog-content>
-  <form [formGroup]="form">
-    <mat-form-field class="full-width">
-      <mat-label>Nome</mat-label>
-      <input matInput formControlName="nome">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email">
-    </mat-form-field>
-  </form>
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">Cancelar</button>
-  <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">Enviar</button>
+<div class="dialog-detalhes-pet">
+    <h2>Detalhes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo Pet</th>
+                <th>Raça</th>
+                <th>Sexo</th>
+                <th>Nome</th>
+                <th>Idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gato</td>
+                <td>Persa</td>
+                <td>M</td>
+                <td>Xerxes</td>
+                <td>2 anos</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

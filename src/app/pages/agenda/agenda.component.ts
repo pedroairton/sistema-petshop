@@ -12,9 +12,9 @@ import { ApiService } from '../../services/api.service';
 export class AgendaComponent implements OnInit {
   #apiService = inject(ApiService);
 
-  public nextAgenda: any
-  public prevAgenda: any
-  public agenda: any
+  public nextAgenda: any;
+  public prevAgenda: any;
+  public agenda: any;
   constructor(private dialog: MatDialog) {}
   openDialog() {
     this.dialog.open(DialogAgendamentoComponent),
@@ -27,31 +27,22 @@ export class AgendaComponent implements OnInit {
       (reponse) => {
         this.prevAgenda = reponse.prevAgendamentos;
         this.nextAgenda = reponse.nextAgendamentos;
-        console.log('proximos', this.nextAgenda)
-        console.log('ultimos', this.prevAgenda)
+        console.log('proximos', this.nextAgenda);
+        console.log('ultimos', this.prevAgenda);
       },
       (err) => {
         console.error('Erro:', err);
       }
     );
-    // this.#apiService.getAgendaNext().subscribe(
-    //   (reponse) => {
-    //     this.nextAgenda = reponse;
-    //     console.log('proximos', this.nextAgenda)
-    //   },
-    //   (err) => {
-    //     console.error('Erro:', err);
-    //   }
-    // );
-    // this.#apiService.getAgendaPrev().subscribe(
-    //   (reponse) => {
-    //     this.prevAgenda = reponse;
-    //     console.log('ultimos', this.prevAgenda)
-    //   },
-    //   (err) => {
-    //     console.error('Erro:', err);
-    //   }
-    // );
+  }
+  formatDate(dateString: string): string {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) {
+      throw new Error("Formato de data inválido. Esperado 'yyyy-mm-dd'.");
+    }
+
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`;
   }
   ngOnInit(): void {
     this.loadAgenda();
