@@ -16,8 +16,10 @@ export class AgendaComponent implements OnInit {
   public prevAgenda: any;
   public agenda: any;
   constructor(private dialog: MatDialog) {}
-  openDialog() {
-    this.dialog.open(DialogAgendamentoComponent),
+  openDialog(idPet: number) {
+    this.dialog.open(DialogAgendamentoComponent, {
+      data: {id: idPet}
+    }),
       {
         width: '300px',
       };

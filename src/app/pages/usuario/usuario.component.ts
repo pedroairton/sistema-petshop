@@ -6,18 +6,30 @@ import { MatFormField } from '@angular/material/form-field';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select'
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-usuario',
-  imports: [CommonModule, RouterModule, MatFormField, MatInputModule, MatSelectModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatFormField,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.scss',
 })
 export class UsuarioComponent implements OnInit {
   id?: number;
-  dados: any
+  dados: any;
   #apiService = inject(ApiService);
   form = new FormGroup({
     nome: new FormControl('', Validators.required),
@@ -25,7 +37,7 @@ export class UsuarioComponent implements OnInit {
     data_nascimento: new FormControl('', Validators.required),
     tipo_animal: new FormControl('', Validators.required),
     raca: new FormControl('', Validators.required),
-  })
+  });
 
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   openDialog() {
@@ -40,33 +52,34 @@ export class UsuarioComponent implements OnInit {
   toggleUsuarios(value: boolean) {
     this.indexUsuarios = value;
   }
-  submitPet(){
-    if(this.form.valid){
-      console.log(this.form)
+  submitPet() {
+    if (this.form.valid) {
+      console.log(this.form);
       const petData = {
         ...this.form.value,
-        id_dono: this.id
-      }
+        id_dono: this.id,
+      };
       // return console.log(petData)
       this.#apiService.createPet(petData).subscribe(
-      response => {
-        console.log('Formulário enviado com sucesso', response);
-        window.alert("Pet cadastrado com sucesso")
-        if(this.id){
-          this.#apiService.getUsuario(this.id).subscribe(
-            (response) => {
-              this.dados = response
-              console.log(this.dados);
-            },
-            (error) => {
-              console.error('Erro:', error);
-            }
-          );
+        (response) => {
+          console.log('Formulário enviado com sucesso', response);
+          window.alert('Pet cadastrado com sucesso');
+          if (this.id) {
+            this.#apiService.getUsuario(this.id).subscribe(
+              (response) => {
+                this.dados = response;
+                console.log(this.dados);
+              },
+              (error) => {
+                console.error('Erro:', error);
+              }
+            );
+          }
+        },
+        (error) => {
+          console.error('Erro:', error);
         }
-      }, error => {
-        console.error('Erro:', error)
-      }
-    )
+      );
     }
   }
   ngOnInit(): void {
@@ -75,7 +88,7 @@ export class UsuarioComponent implements OnInit {
       if (this.id) {
         this.#apiService.getUsuario(this.id).subscribe(
           (response) => {
-            this.dados = response
+            this.dados = response;
             console.log(this.dados);
           },
           (error) => {
@@ -92,7 +105,7 @@ export class UsuarioComponent implements OnInit {
 
     // Verificação se a data de nascimento é válida
     if (isNaN(nascimento.getTime())) {
-        return "Data inválida";
+      return 'Data inválida';
     }
 
     let idadeAnos = hoje.getFullYear() - nascimento.getFullYear();
@@ -101,29 +114,31 @@ export class UsuarioComponent implements OnInit {
 
     // Ajuste da idade se ainda não fez aniversário este ano
     if (
-        mesAtual < nascimento.getMonth() ||
-        (mesAtual === nascimento.getMonth() && diaAtual < nascimento.getDate())
+      mesAtual < nascimento.getMonth() ||
+      (mesAtual === nascimento.getMonth() && diaAtual < nascimento.getDate())
     ) {
-        idadeAnos--;
+      idadeAnos--;
     }
 
     // Se idade for menor que 1 ano
     if (idadeAnos < 1) {
-        let idadeMeses = (hoje.getFullYear() - nascimento.getFullYear()) * 12 +
-                         hoje.getMonth() - nascimento.getMonth();
+      let idadeMeses =
+        (hoje.getFullYear() - nascimento.getFullYear()) * 12 +
+        hoje.getMonth() -
+        nascimento.getMonth();
 
-        // Ajustar o mês se o dia ainda não foi alcançado
-        if (diaAtual < nascimento.getDate()) {
-            idadeMeses--;
-        }
+      // Ajustar o mês se o dia ainda não foi alcançado
+      if (diaAtual < nascimento.getDate()) {
+        idadeMeses--;
+      }
 
-        if (idadeMeses < 1) {
-            return "<1 mês";
-        }
+      if (idadeMeses < 1) {
+        return '<1 mês';
+      }
 
-        return `${idadeMeses} ${idadeMeses === 1 ? 'mês' : 'meses'}`;
+      return `${idadeMeses} ${idadeMeses === 1 ? 'mês' : 'meses'}`;
     }
 
     return `${idadeAnos} ${idadeAnos === 1 ? 'ano' : 'anos'}`;
-}
+  }
 }

@@ -23,6 +23,9 @@ export class ApiService {
   getAgenda(): Observable<any> {
     return this.http.get(this.apiUrl + '/agendamento');
   }
+  getPet(id: number): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/pet/'+id)
+  }
   // getAgendaNext(): Observable<any> {
   //   return this.http.get(this.apiUrl + '/agendamento/next');
   // }

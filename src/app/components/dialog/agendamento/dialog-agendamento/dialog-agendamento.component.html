@@ -12,11 +12,11 @@
         </thead>
         <tbody>
             <tr>
-                <td>Gato</td>
-                <td>Persa</td>
-                <td>M</td>
-                <td>Xerxes</td>
-                <td>2 anos</td>
+                <td>{{ pet.tipo_animal }}</td>
+                <td>{{ pet.raca }}</td>
+                <td>{{ pet.genero }}</td>
+                <td>{{ pet.nome }}</td>
+                <td>{{ calcularIdade(pet.data_nascimento) }}</td>
             </tr>
         </tbody>
     </table>
