@@ -40,8 +40,10 @@ export class UsuarioComponent implements OnInit {
   });
 
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
-  openDialog() {
-    this.dialog.open(DialogAtendimentosPetComponent),
+  openDialog(idPet: number) {
+    this.dialog.open(DialogAtendimentosPetComponent, {
+      data: {id: idPet}
+    }),
       {
         minWidth: '1100px',
         maxWidth: '100%',

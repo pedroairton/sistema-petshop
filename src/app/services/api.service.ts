@@ -21,10 +21,7 @@ export class ApiService {
     return this.http.get(this.apiUrl + '/api/busca-user/?nome=' + nome);
   }
   getAgenda(): Observable<any> {
-    return this.http.get(this.apiUrl + '/agendamento');
-  }
-  getPet(id: number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/pet/'+id)
+    return this.http.get(this.apiUrl + '/api/agendamento');
   }
   // getAgendaNext(): Observable<any> {
   //   return this.http.get(this.apiUrl + '/agendamento/next');
@@ -32,6 +29,12 @@ export class ApiService {
   // getAgendaPrev(): Observable<any> {
   //   return this.http.get(this.apiUrl + '/agendamento/prev');
   // }
+  getPet(id: number): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/pet/'+id)
+  }
+  getPetAgenda(id: number): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/agendamento/'+id)
+  }
   // post
   createUsuario(userData: any): Observable<any> {
     return this.http
