@@ -28,11 +28,24 @@ $lightBlue2: #60c1dc;
     .table {
       display: none;
       // display: flex;
+      flex-direction: column;
+      align-items: flex-end;
       padding: 2rem;
       border-radius: 15px;
       background-color: #f0f0f0;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       margin-top: 2rem;
+      .guia{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+        .item{
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
       table {
         width: 100%;
         thead {
@@ -54,6 +67,7 @@ $lightBlue2: #60c1dc;
               svg {
                 cursor: pointer;
                 transition: 0.3s;
+                position: relative;
                 &:hover {
                   scale: 1.1;
                 }

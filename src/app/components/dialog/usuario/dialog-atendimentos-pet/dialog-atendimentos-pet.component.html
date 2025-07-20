@@ -1,32 +1,36 @@
 <div class="dialog-atendimentos-pet">
   <h2>Atendimentos desse pet</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Serviço</th>
-        <th>Data</th>
-        <th>Hora</th>
-        <th>Descrição</th>
-        <th>Status</th>
-        <th>Agendado em</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (agend of agendamentos; track $index) {
-      <tr>
-        <td>Tosa</td>
-        <td>{{ formatDate(agend.data_agendamento) }}</td>
-        <td>{{ agend.hora_agendamento }}</td>
-        @if (agend.descricao) {
-            <td>{{ agend.descricao }}</td>
-        } @else {
-            <td>Não fornecido</td>
+  @if (agendamentos.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Serviço</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Descrição</th>
+          <th>Status</th>
+          <th>Agendado em</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (agend of agendamentos; track $index) {
+        <tr>
+          <td>Tosa</td>
+          <td>{{ formatDate(agend.data_agendamento) }}</td>
+          <td>{{ agend.hora_agendamento }}</td>
+          @if (agend.descricao) {
+              <td>{{ agend.descricao }}</td>
+          } @else {
+              <td>Não fornecido</td>
+          }
+          <!-- se houver descrição, abrir um modal menor abaixo do aberto contendo ela -->
+          <td>{{ agend.status }}</td>
+          <td>{{ formatTimestampToDate(agend.created_at) }}</td>
+        </tr>
         }
-        <!-- se houver descrição, abrir um modal menor abaixo do aberto contendo ela -->
-        <td>{{ agend.status }}</td>
-        <td>{{ formatTimestampToDate(agend.created_at) }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  } @else {
+    <h3 class="nenhum">Nenhum agendamento encontrado.</h3>
+  }
 </div>

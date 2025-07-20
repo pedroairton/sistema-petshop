@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { DialogAtendimentosPetComponent } from '../../components/dialog/usuario/dialog-atendimentos-pet/dialog-atendimentos-pet.component';
+import { DialogAgendarPetComponent } from '../../components/dialog/usuario/dialog-agendar-pet/dialog-agendar-pet.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -42,6 +43,16 @@ export class UsuarioComponent implements OnInit {
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   openDialog(idPet: number) {
     this.dialog.open(DialogAtendimentosPetComponent, {
+      data: {id: idPet}
+    }),
+      {
+        minWidth: '1100px',
+        maxWidth: '100%',
+        width: '1600px',
+      };
+  }
+  openDialogAgenda(idPet: number) {
+    this.dialog.open(DialogAgendarPetComponent, {
       data: {id: idPet}
     }),
       {
