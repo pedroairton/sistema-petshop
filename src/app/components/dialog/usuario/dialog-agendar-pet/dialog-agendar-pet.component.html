@@ -1,1 +1,48 @@
-<p>dialog-agendar-pet works!</p>
+<div class="dialog-agendar-pet">
+  <h2>Formulário de agendamento</h2>
+  <form [formGroup]="form" class="form-agendar">
+    <mat-form-field>
+      <mat-label>Escolha uma data</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Hora do agendamento</mat-label>
+      <input
+        matInput
+        formControlName="data_nascimento"
+        type="time"
+        name="data_nascimento"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Serviço</mat-label>
+      <mat-select
+        matNativeControl
+        formControlName="servico"
+        name="servico"
+        required
+      >
+        <mat-option value="Banho">Banho</mat-option>
+        <mat-option value="Tosa">Tosa</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descrição (opcional)</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+    </mat-form-field>
+    <button type="submit">Enviar</button>
+  </form>
+</div>

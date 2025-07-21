@@ -12,7 +12,9 @@ $lightBlue2: #60c1dc;
     panel-background-color: #f0f0f0,
   ));
   --mat-option-selected-state-layer-color: #c0c0c0;
-  --mat-option-hover-state-layer-color: #d0d0d0
+  --mat-option-hover-state-layer-color: #d0d0d0;
+  --mat-datepicker-calendar-container-background-color: #f0f0f0;
+  --mat-datepicker-calendar-container-shape: 0px;
 }
 mat-option{
   transition: .3s;
