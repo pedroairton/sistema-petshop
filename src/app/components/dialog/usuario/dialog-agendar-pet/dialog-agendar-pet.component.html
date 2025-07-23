@@ -1,23 +1,38 @@
 <div class="dialog-agendar-pet">
-  <h2>Formulário de agendamento</h2>
+  <h2>Formulário de agendamento
+  </h2>
   <form [formGroup]="form" class="form-agendar">
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Escolha uma data</mat-label>
-      <input matInput [matDatepicker]="picker" />
-      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="data_agendamento"
+        name="data_agendamento"
+      />
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Data do agendamento</mat-label>
+      <input
+        matInput
+        formControlName="data_agendamento"
+        type="date"
+        name="data_agendamento"
+        required
+      />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Hora do agendamento</mat-label>
       <input
         matInput
-        formControlName="data_nascimento"
+        formControlName="hora_agendamento"
         type="time"
-        name="data_nascimento"
+        name="hora_agendamento"
         required
       />
     </mat-form-field>
@@ -25,12 +40,13 @@
       <mat-label>Serviço</mat-label>
       <mat-select
         matNativeControl
-        formControlName="servico"
-        name="servico"
+        formControlName="id_servico"
+        name="id_servico"
         required
       >
-        <mat-option value="Banho">Banho</mat-option>
-        <mat-option value="Tosa">Tosa</mat-option>
+      @for (servico of servicos; track $index) {
+        <mat-option value="{{ servico.id }}">{{ servico.nome_servico }}</mat-option>
+      }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -41,8 +57,10 @@
         #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="5"
+        formControlName="descricao"
+        name="descricao"
       ></textarea>
     </mat-form-field>
-    <button type="submit">Enviar</button>
+    <button type="submit" (click)="submitAgendamento()" [disabled]="form.invalid">Enviar</button>
   </form>
 </div>

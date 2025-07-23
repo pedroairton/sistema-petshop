@@ -35,6 +35,9 @@ export class ApiService {
   getPetAgenda(id: number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/agendamento/'+id)
   }
+  getServicos(): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/servicos')
+  }
   // post
   createUsuario(userData: any): Observable<any> {
     return this.http
@@ -45,6 +48,9 @@ export class ApiService {
   }
   createPet(petData: any) {
     return this.http.post(this.apiUrl+'/api/usuarios/'+petData.id_dono, petData)
+  }
+  createAgendamento(dataAgendamento: any){
+    return this.http.post(this.apiUrl+'/api/agendamento', dataAgendamento)
   }
 
 
