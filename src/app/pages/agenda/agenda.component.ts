@@ -18,7 +18,7 @@ export class AgendaComponent implements OnInit {
   constructor(private dialog: MatDialog) {}
   openDialog(idPet: number) {
     this.dialog.open(DialogAgendamentoComponent, {
-      data: {id: idPet}
+      data: { id: idPet },
     }),
       {
         width: '300px',
@@ -36,6 +36,13 @@ export class AgendaComponent implements OnInit {
         console.error('Erro:', err);
       }
     );
+  }
+  marcaConcluido() {
+    if (window.confirm('Deseja marcar este agendamento como concluído ?')) {
+      console.log('Confirmou');
+    } else {
+      console.log('Não confirmou');
+    }
   }
   formatDate(dateString: string): string {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
