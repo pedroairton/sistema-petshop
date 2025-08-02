@@ -26,9 +26,9 @@ export class AgendaComponent implements OnInit {
   }
   loadAgenda() {
     this.#apiService.getAgenda().subscribe(
-      (reponse) => {
-        this.prevAgenda = reponse.prevAgendamentos;
-        this.nextAgenda = reponse.nextAgendamentos;
+      (response) => {
+        this.prevAgenda = response.prevAgendamentos;
+        this.nextAgenda = response.nextAgendamentos;
         console.log('proximos', this.nextAgenda);
         console.log('ultimos', this.prevAgenda);
       },
@@ -37,9 +37,18 @@ export class AgendaComponent implements OnInit {
       }
     );
   }
-  marcaConcluido() {
+  marcaConcluido(idItem: number) {
     if (window.confirm('Deseja marcar este agendamento como concluído ?')) {
-      console.log('Confirmou');
+      console.log('Confirmou o id:', idItem);
+      this.#apiService.concluiAgendamento(idItem).subscribe(
+        (response) => {
+          console.log(response);
+          this.loadAgenda()
+        },
+        (err) => {
+          console.error('Erro: ', err);
+        }
+      );
     } else {
       console.log('Não confirmou');
     }

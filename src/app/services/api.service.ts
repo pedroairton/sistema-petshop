@@ -52,6 +52,9 @@ export class ApiService {
   createAgendamento(dataAgendamento: any){
     return this.http.post(this.apiUrl+'/api/agendamento', dataAgendamento)
   }
+  concluiAgendamento(idAgendamento: number){
+    return this.http.put(this.apiUrl+'/api/agendamento/'+idAgendamento+'/concluir', {})
+  }
 
 
   private handleError(error: HttpErrorResponse) {
