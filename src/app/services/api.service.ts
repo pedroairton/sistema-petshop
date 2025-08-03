@@ -38,6 +38,9 @@ export class ApiService {
   getServicos(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/servicos')
   }
+  getPetCount(): Observable<any>{
+    return this.http.get(this.apiUrl+'/api/count/pet')
+  }
   // post
   createUsuario(userData: any): Observable<any> {
     return this.http

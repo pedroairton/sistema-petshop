@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  #apiService = inject(ApiService);
   public totalUsuarios: number = 54;
   public consultasHoje: {
     usuario: string;
@@ -45,14 +47,19 @@ export class DashboardComponent {
       total: 15,
     },
   ];
-  public animaisTotal: { tipo: string; total: number }[] = [
-    {
-      tipo: 'Gato',
-      total: 56,
-    },
-    {
-      tipo: 'Cachorro',
-      total: 47,
-    },
-  ];
+  public animaisTotal: any
+  countPet(){
+    this.#apiService.getPetCount().subscribe(
+      response => {
+        this.animaisTotal = response
+        console.log(response)
+        return response
+      }, err => {
+        console.log('Erro: ', err)
+      }
+    )
+  }
+  ngOnInit(): void {
+    this.countPet()
+  }
 }
