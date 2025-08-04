@@ -14,6 +14,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { DialogEditPetComponent } from '../../components/dialog/usuario/dialog-edit-pet/dialog-edit-pet.component';
 
 @Component({
   selector: 'app-usuario',
@@ -43,7 +44,7 @@ export class UsuarioComponent implements OnInit {
   constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
   openDialog(idPet: number) {
     this.dialog.open(DialogAtendimentosPetComponent, {
-      data: {id: idPet}
+      data: { id: idPet },
     }),
       {
         minWidth: '1100px',
@@ -53,7 +54,17 @@ export class UsuarioComponent implements OnInit {
   }
   openDialogAgenda(idPet: number) {
     this.dialog.open(DialogAgendarPetComponent, {
-      data: {id: idPet}
+      data: { id: idPet },
+    }),
+      {
+        minWidth: '1100px',
+        maxWidth: '100%',
+        width: '1600px',
+      };
+  }
+  openDialogEdit(pet: any) {
+    this.dialog.open(DialogEditPetComponent, {
+      data: { pet },
     }),
       {
         minWidth: '1100px',
