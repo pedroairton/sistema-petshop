@@ -62,6 +62,9 @@ export class ApiService {
   atualizaPet(petData: any){
     return this.http.put(this.apiUrl+'/api/pet/atualizar/'+petData.id, petData)
   }
+  atualizaUsuario(userData: any){
+    return this.http.put(this.apiUrl+'/api/usuarios/atualizar/'+userData.id, userData)
+  }
 
 
   private handleError(error: HttpErrorResponse) {

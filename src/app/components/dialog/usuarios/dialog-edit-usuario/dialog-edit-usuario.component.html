@@ -1,0 +1,55 @@
+<div class="dialog-edit-usuario">
+  <h2 mat-dialog-title>Editar Pet</h2>
+
+  <div mat-dialog-content>
+    <form class="form-agendar" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          formControlName="nome"
+          type="text"
+          name="nome"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          name="email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Número de Telefone</mat-label>
+        <input
+          matInput
+          formControlName="telefone"
+          type="text"
+          name="telefone"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <input
+          matInput
+          formControlName="endereco"
+          type="text"
+          name="endereco"
+          required
+        />
+      </mat-form-field>
+      <button type="submit" (click)="submit()" [disabled]="form.invalid">
+        Enviar
+      </button>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+  </div>
+</div>

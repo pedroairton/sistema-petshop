@@ -9,11 +9,18 @@ import {
   FormControl,
   FormGroup,
   Validators,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
+import { DialogEditUsuarioComponent } from '../../components/dialog/usuarios/dialog-edit-usuario/dialog-edit-usuario.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-usuarios',
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss',
 })
@@ -25,25 +32,35 @@ export class UsuariosComponent implements OnInit {
     telefone: new FormControl('', Validators.required),
     endereco: new FormControl('', Validators.required),
   });
+  constructor(private dialog: MatDialog){}
 
   submitUser() {
     if (this.form.valid) {
       console.log(this.form);
       this.#apiService.createUsuario(this.form.value).subscribe(
-      response => {
-        console.log('Formulário enviado com sucesso', response)
-        window.alert('Usuário Cadastrado')
-        this.loadUsers()
-      }, error => {
-        console.error('Erro:', error);
-        
-      }
-    )
+        (response) => {
+          console.log('Formulário enviado com sucesso', response);
+          window.alert('Usuário Cadastrado');
+          this.loadUsers();
+        },
+        (error) => {
+          console.error('Erro:', error);
+        }
+      );
     } else {
       console.log('Form inválido');
     }
   }
-
+  openDialogEdit(usuario: any) {
+    this.dialog.open(DialogEditUsuarioComponent, {
+      data: { usuario },
+    }),
+      {
+        minWidth: '1100px',
+        maxWidth: '100%',
+        width: '1600px',
+      };
+  }
   public usuarios: Usuario[] = [];
   public indexUsuarios: boolean = true;
   toggleUsuarios(value: boolean) {
