@@ -38,6 +38,9 @@ export class ApiService {
   getServicos(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/servicos')
   }
+  getServicosCount(): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/count/servicos')
+  }
   getPetCount(): Observable<any>{
     return this.http.get(this.apiUrl+'/api/count/pet')
   }

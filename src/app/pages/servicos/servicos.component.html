@@ -1,8 +1,24 @@
 <div class="page-servicos">
   <h1>SERVIÇOS</h1>
   <div class="content-servicos">
-    <div class="table-agendamentos">
-      <h2>Todos os Serviços</h2>
+    <div class="index-servicos">
+      <h2
+        style="border-radius: 15px 0 0 0"
+        [ngStyle]="{ 'background-color': indexServicos ? '#d7d7d7' : '' }"
+        (click)="toggleServicos(true)"
+      >
+        TODOS OS SERVIÇOS
+      </h2>
+      <h2
+        style="border-radius: 0 15px 0 0"
+        [ngStyle]="{ 'background-color': indexServicos ? '' : '#d7d7d7' }"
+        (click)="toggleServicos(false)"
+      >
+        NOVO SERVIÇO
+      </h2>
+    </div>
+    @if (indexServicos) {
+    <div class="table">
       <div class="guia">
         <div class="item">
           <svg
@@ -62,7 +78,7 @@
             <th>Del.</th>
             <th>Status</th>
             <th>Nome do Serviço</th>
-            <th>Quant. Agendamentos</th>
+            <th>Agendamentos</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -107,8 +123,10 @@
                 <circle cx="8" cy="8" r="8" />
               </svg>
             </td>
-            <td>{{ item.servico }}</td>
-            <td>{{ item.total }}</td>
+            <td>{{ item.nome_servico }}</td>
+            <td>
+              <b>{{ item.total }}</b>
+            </td>
             <td style="display: flex; justify-content: space-evenly; gap: 8px">
               <!-- ativar/inativar -->
               @if (item.status !== 'Ativo') {
@@ -163,5 +181,31 @@
         </tbody>
       </table>
     </div>
+    } @else {
+    <div class="novo-servico">
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Nome do serviço</mat-label>
+          <input
+            matInput
+            formControlName="nome_servico"
+            type="text"
+            name="nome_servico"
+            required
+          />
+        </mat-form-field>
+        <mat-checkbox matInput class="" formControlName="status">
+          Registrar como inativo
+        </mat-checkbox>
+        <button
+          type="submit"
+          (click)="submitServico()"
+          [disabled]="form.invalid"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+    }
   </div>
 </div>
