@@ -35,12 +35,15 @@ export class ApiService {
   getPetAgenda(id: number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/agendamento/'+id)
   }
-  getServicos(): Observable<any> {
+  getServicosDisponiveis(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/servicos')
   }
   getServicosCount(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/count/servicos')
   }
+  // getServico(idServico: number){
+  //   return this.http.get(this.apiUrl+'/api/servico/'+idServico)
+  // }
   getPetCount(): Observable<any>{
     return this.http.get(this.apiUrl+'/api/count/pet')
   }
@@ -58,6 +61,9 @@ export class ApiService {
   createAgendamento(dataAgendamento: any){
     return this.http.post(this.apiUrl+'/api/agendamento', dataAgendamento)
   }
+  createServico(dataServico: any){
+    return this.http.post(this.apiUrl+'/api/servico', dataServico)
+  }
   // put
   concluiAgendamento(idAgendamento: number){
     return this.http.put(this.apiUrl+'/api/agendamento/'+idAgendamento+'/concluir', {})
@@ -68,7 +74,19 @@ export class ApiService {
   atualizaUsuario(userData: any){
     return this.http.put(this.apiUrl+'/api/usuarios/atualizar/'+userData.id, userData)
   }
-
+  mudaStatusServico(idServico: number){
+    return this.http.put(this.apiUrl+'/api/servico/'+idServico+'/status', {})
+  }
+  atualizaServico(servicoData: any){
+    return this.http.put(this.apiUrl+'/api/servico/atualizar/'+servicoData.id, servicoData)
+  }
+  atualizaAgendamento(agendamentoData: any){
+    return this.http.put(this.apiUrl+'/api/agendamento/atualizar/'+agendamentoData.id, agendamentoData)
+  }
+  // delete
+  deletaServico(idServico: number){
+    return this.http.delete(this.apiUrl+'/api/servico/'+idServico+'/delete')
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

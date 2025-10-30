@@ -26,8 +26,7 @@ $lightBlue2: #60c1dc;
       }
     }
     .table {
-      display: none;
-      // display: flex;
+      display: flex;
       flex-direction: column;
       align-items: flex-end;
       padding: 2rem;
@@ -82,8 +81,7 @@ $lightBlue2: #60c1dc;
       }
     }
     .novo-pet {
-      display: none;
-      // display: flex;
+      display: flex;
       justify-content: center;
       padding: 80px;
       form {

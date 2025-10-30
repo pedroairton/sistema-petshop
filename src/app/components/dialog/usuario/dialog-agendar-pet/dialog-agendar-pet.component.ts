@@ -40,7 +40,7 @@ export class DialogAgendarPetComponent implements OnInit {
     descricao: new FormControl(''),
   });
   loadServicos() {
-    this.#apiService.getServicos().subscribe(
+    this.#apiService.getServicosDisponiveis().subscribe(
       (response) => {
         this.servicos = response;
         console.log(this.servicos);

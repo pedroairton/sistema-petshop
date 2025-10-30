@@ -1,0 +1,25 @@
+<div class="dialog-edit-servico">
+  <h2 mat-dialog-title>Editar Serviço</h2>
+
+  <div mat-dialog-content>
+    <form class="form-servico" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Nome do serviço</mat-label>
+        <input
+          matInput
+          formControlName="nome_servico"
+          type="text"
+          name="nome_servico"
+          required
+        />
+      </mat-form-field>
+      <button type="submit" (click)="submit()" [disabled]="form.invalid">
+        Enviar
+      </button>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+  </div>
+</div>

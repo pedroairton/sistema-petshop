@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { DialogAgendamentoComponent } from '../../components/dialog/agendamento/dialog-agendamento/dialog-agendamento.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../../services/api.service';
+import { DialogEditAgendamentoComponent } from '../../components/dialog/agendamento/dialog-edit-agendamento/dialog-edit-agendamento.component';
 
 @Component({
   selector: 'app-agenda',
@@ -24,6 +25,16 @@ export class AgendaComponent implements OnInit {
         width: '300px',
       };
   }
+  openDialogEdit(agendamento: any) {
+    this.dialog.open(DialogEditAgendamentoComponent, {
+      data: { agendamento },
+    }),
+      {
+        minWidth: '1100px',
+        maxWidth: '100%',
+        width: '1600px',
+      };
+  }
   loadAgenda() {
     this.#apiService.getAgenda().subscribe(
       (response) => {
@@ -43,7 +54,7 @@ export class AgendaComponent implements OnInit {
       this.#apiService.concluiAgendamento(idItem).subscribe(
         (response) => {
           console.log(response);
-          this.loadAgenda()
+          this.loadAgenda();
         },
         (err) => {
           console.error('Erro: ', err);

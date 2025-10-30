@@ -1,0 +1,34 @@
+$darkBlue: #219799;
+$darkBlue2: #1a7778;
+$lightBlue: #aadef3;
+$lightBlue2: #60c1dc;
+
+.dialog-edit-agendamento {
+  padding: 1.5rem;
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .form-agendamento {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    button {
+      border: none;
+      border-radius: 2px;
+      background-color: $darkBlue;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      height: 40px;
+      transition: 0.3s;
+      &:hover {
+        background-color: $darkBlue2;
+      }
+      &:disabled {
+        background-color: #b0b0b0;
+        cursor: default;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<div class="dialog-edit-agendamento">
+  <h2 mat-dialog-title>Editar Agendamento</h2>
+
+  <div mat-dialog-content>
+    <form class="form-agendamento" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Data do agendamento</mat-label>
+        <input
+          matInput
+          formControlName="data_agendamento"
+          type="date"
+          name="data_agendamento"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Hora do agendamento</mat-label>
+        <input
+          matInput
+          formControlName="hora_agendamento"
+          type="time"
+          name="hora_agendamento"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Serviço</mat-label>
+        <mat-select
+          matNativeControl
+          formControlName="id_servico"
+          name="id_servico"
+          required
+        >
+          @for (servico of servicos; track $index) {
+          <mat-option value="{{ servico.id }}">{{
+            servico.nome_servico
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descrição (opcional)</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+          formControlName="descricao"
+          name="descricao"
+        ></textarea>
+      </mat-form-field>
+      <button type="submit" (click)="submit()" [disabled]="form.invalid">
+        Enviar
+      </button>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+  </div>
+</div>
