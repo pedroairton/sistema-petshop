@@ -43,6 +43,7 @@
         formControlName="id_servico"
         name="id_servico"
         required
+        [disabled]="true"
       >
       @for (servico of servicos; track $index) {
         <mat-option value="{{ servico.id }}">{{ servico.nome_servico }}</mat-option>

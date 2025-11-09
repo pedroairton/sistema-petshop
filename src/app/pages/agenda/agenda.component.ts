@@ -73,6 +73,19 @@ export class AgendaComponent implements OnInit {
     const [year, month, day] = dateString.split('-');
     return `${day}/${month}/${year}`;
   }
+  formatHours(time: string): string {
+    // Valida o formato básico
+    const regex = /^(\d{2}):(\d{2}):(\d{2})$/;
+    const match = time.match(regex);
+
+    if (!match) {
+      throw new Error('Formato inválido. Use HH:MM:SS');
+    }
+
+    // Retorna apenas horas e minutos
+    const [_, hours, minutes] = match;
+    return `${hours}:${minutes}`;
+  }
   ngOnInit(): void {
     this.loadAgenda();
   }
