@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'https://api1.srv1109011.hstgr.cloud';
 
   constructor(private http: HttpClient) {}
 
