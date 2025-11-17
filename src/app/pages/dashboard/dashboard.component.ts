@@ -9,57 +9,85 @@ import { ApiService } from '../../services/api.service';
 })
 export class DashboardComponent implements OnInit {
   #apiService = inject(ApiService);
-  public totalUsuarios: number = 54;
-  public consultasHoje: {
-    usuario: string;
-    servico: string;
-    horario_inicio: string;
-  }[] = [
-    {
-      usuario: 'Roberto',
-      servico: 'Consulta',
-      horario_inicio: '12h30',
-    },
-    {
-      usuario: 'Jonas',
-      servico: 'Vacina',
-      horario_inicio: '14h30',
-    },
-  ];
-  public servicosTotal: {
-    servico: string;
-    total: number;
-  }[] = [
-    {
-      servico: 'Banho',
-      total: 38,
-    },
-    {
-      servico: 'Tosa',
-      total: 31,
-    },
-    {
-      servico: 'Corte de unha',
-      total: 20,
-    },
-    {
-      servico: 'Vacina',
-      total: 15,
-    },
-  ];
-  public animaisTotal: any
-  countPet(){
+  public usuariosTotal: number = 54;
+  public animaisTotal: any;
+  public nextAgenda: any;
+  public prevAgenda: any;
+  public servicosTotal: any
+  formatDate(dateString: string): string {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) {
+      throw new Error("Formato de data inválido. Esperado 'yyyy-mm-dd'.");
+    }
+
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`;
+  }
+  formatHours(time: string): string {
+    // Valida o formato básico
+    const regex = /^(\d{2}):(\d{2}):(\d{2})$/;
+    const match = time.match(regex);
+
+    if (!match) {
+      throw new Error('Formato inválido. Use HH:MM:SS');
+    }
+
+    // Retorna apenas horas e minutos
+    const [_, hours, minutes] = match;
+    return `${hours}:${minutes}`;
+  }
+  countPet() {
     this.#apiService.getPetCount().subscribe(
-      response => {
-        this.animaisTotal = response
-        console.log(response)
-        return response
-      }, err => {
-        console.log('Erro: ', err)
+      (response) => {
+        this.animaisTotal = response;
+        console.log(response);
+        return response;
+      },
+      (err) => {
+        console.log('Erro: ', err);
       }
-    )
+    );
+  }
+  countUsuarios() {
+    this.#apiService.getUsuariosCount().subscribe(
+      (response) => {
+        this.usuariosTotal = response.total;
+        console.log(response);
+        return response;
+      },
+      (err) => {
+        console.log('Erro: ', err);
+      }
+    );
+  }
+  servicosCount() {
+    this.#apiService.getServicosCount().subscribe(
+      (response) => {
+        console.log(response);
+        this.servicosTotal = response;
+      },
+      (err) => {
+        console.error('Erro: ', err);
+      }
+    );
+  }
+  getAgenda() {
+    this.#apiService.getAgendaDashboard().subscribe(
+      (response) => {
+        this.nextAgenda = response.nextAgendamentos;
+        this.prevAgenda = response.prevAgendamentos;
+        console.log(response);
+        return response;
+      },
+      (err) => {
+        console.log('Erro: ', err);
+      }
+    );
   }
   ngOnInit(): void {
-    this.countPet()
+    this.countPet();
+    this.countUsuarios();
+    this.getAgenda();
+    this.servicosCount()
   }
 }

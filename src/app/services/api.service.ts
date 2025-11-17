@@ -6,6 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
+  // private apiUrl = 'http://localhost:8000';
   private apiUrl = 'https://api1.srv1109011.hstgr.cloud';
 
   constructor(private http: HttpClient) {}
@@ -17,11 +18,17 @@ export class ApiService {
   getUsuario(id: number): Observable<any> {
     return this.http.get(this.apiUrl + '/api/usuarios/' + id);
   }
+  getUsuariosCount(): Observable<any>{
+    return this.http.get(this.apiUrl+'/api/count/usuarios')
+  }
   searchUsuario(nome: string): Observable<any> {
     return this.http.get(this.apiUrl + '/api/busca-user/?nome=' + nome);
   }
   getAgenda(): Observable<any> {
     return this.http.get(this.apiUrl + '/api/agendamento');
+  }
+  getAgendaDashboard(): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/agendamento/mini')
   }
   // getAgendaNext(): Observable<any> {
   //   return this.http.get(this.apiUrl + '/agendamento/next');
