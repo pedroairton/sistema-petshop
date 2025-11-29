@@ -3,21 +3,23 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 
 export interface Admin {
-  id: number,
-  usuario: string
+  id: number;
+  usuario: string;
 }
 export interface AuthResponse {
-  authenticated: boolean,
-  admin?: Admin
+  authenticated: boolean;
+  admin?: Admin;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private http = inject(HttpClient)
-  private apiUrl = 'http://localhost:8000';
-  // private apiUrl = 'https://api1.srv1109011.hstgr.cloud';
+  private http = inject(HttpClient);
+  private apiUrl =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:8000'
+      : 'https://api1.srv1109011.hstgr.cloud';
 
   // get
   getUsuarios(): Observable<any> {
