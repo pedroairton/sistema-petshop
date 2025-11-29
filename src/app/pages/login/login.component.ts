@@ -9,8 +9,8 @@ import {
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -34,16 +34,17 @@ export class LoginComponent {
     })
   }
 
-  #apiService = inject(ApiService);
+  #authService = inject(AuthService);
   form = new FormGroup({
     usuario: new FormControl('', Validators.required),
     senha: new FormControl('', Validators.required),
   });
   submitLogin() {
     if (this.form.valid) {
-      this.#apiService.loginAdmin(this.form.value).subscribe({
+      this.#authService.loginAdmin(this.form.value).subscribe({
         next: () => {
-          this.router.navigate(['/login'])
+          alert("Login realizado")
+          this.router.navigate(['/dashboard'])
         },
         error: (err) => {
           console.error('Erro ao fazer login', err);
