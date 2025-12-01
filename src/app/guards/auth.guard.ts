@@ -10,10 +10,11 @@ export const authGuard: CanActivateFn = (route, state) => {
   return authService.checkAuth().pipe(
     map((response: any) => {
       if(response.authenticated){
-        console.log("Usuário logado");
+        console.log('Usuário logado');
+        
         return true
       } else {
-        console.log("Usuário não autenticado, redirecionando para login");
+        alert("Usuário não autenticado, redirecionando para login");
         router.navigate(['/login'], {
           queryParams: {returnUrl: state.url},
         })
@@ -21,7 +22,7 @@ export const authGuard: CanActivateFn = (route, state) => {
       }
     }), 
     catchError((error) => {
-      console.error('Erro ao verificar autenticação:', error);
+      alert('Erro ao verificar autenticação:');
       router.navigate(['/login'], {
         queryParams: { returnUrl: state.url },
       });
