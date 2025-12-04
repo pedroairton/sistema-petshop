@@ -8,7 +8,7 @@ import { ServicosComponent } from './pages/servicos/servicos.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent, title: 'Petshop - Login' },
+  { path: 'login', component: LoginComponent, title: 'Petshop - Login', data: {hideNavbar: false} },
   {
     path: 'dashboard',
     component: DashboardComponent,

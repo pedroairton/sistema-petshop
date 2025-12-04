@@ -54,3 +54,14 @@ a{
 .off{
   display: none;
 }
+@media (max-width: 1024px){
+  .table{
+    overflow: scroll;
+  }
+  table{
+    min-width: 1000px;
+  }
+  .sidebar{
+    width: 150px !important;
+  }
+}

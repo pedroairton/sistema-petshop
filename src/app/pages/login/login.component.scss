@@ -50,3 +50,10 @@ $lightBlue2: #60c1dc;
      }
    }
    }
+   @media (max-width: 580px){
+    .page-login{
+      form{
+        width: 300px;
+      }
+    }
+   }
