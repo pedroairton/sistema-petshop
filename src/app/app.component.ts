@@ -27,15 +27,19 @@ export class AppComponent {
   title: string = 'petshop';
   public mobile: boolean = false;
 
-  showNavbar = true
-  hideNavbar = ['/login']
+  hideNavbar: boolean = false
 
   constructor(private dialog: MatDialog, private router: Router) {
-    router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe((e:any) => {
-      const route = this.router.routerState.root.firstChild;
-      this.showNavbar = !(route?.snapshot.data?.['hideNavbar']);
-      console.log(this.showNavbar, !(route?.snapshot.data?.['hideNavbar']));
-      
+    this.router.events.subscribe(e => {
+      if(e instanceof NavigationEnd) {
+        console.log(e.url);
+        
+        if(e.url === '/login') {
+          this.hideNavbar = true
+        } else {
+          this.hideNavbar = false
+        }
+      }
     })
   }
   openDialog(){

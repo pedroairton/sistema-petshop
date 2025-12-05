@@ -105,3 +105,40 @@
       }
     }
   }
+  @media (max-width: 1024px) {
+    .page-dashboard{
+      padding: 50px;
+      grid-template-columns: 1fr 1fr;
+      .tables{
+        flex-direction: column;
+        .table-title{
+          flex-direction: column;
+        }
+      }
+      h1, .tables{
+        grid-column: 1/3;
+      }
+      .servicos{
+        .servicos-content{
+          margin-top: 50px;
+        }
+      }
+      .animais{
+        .animais-content{
+          margin-top: 50px;
+          .animal{
+            h3{
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 580px){
+    .page-dashboard{
+      display: flex;
+      flex-direction: column;
+      
+    }
+  }

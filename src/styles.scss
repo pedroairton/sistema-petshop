@@ -56,10 +56,11 @@ a{
 }
 @media (max-width: 1024px){
   .table{
-    overflow: scroll;
+    overflow-x: scroll;
+    min-height: 150px;
   }
   table{
-    min-width: 1000px;
+    min-width: 650px;
   }
   .sidebar{
     width: 150px !important;
