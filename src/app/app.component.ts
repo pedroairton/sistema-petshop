@@ -32,8 +32,7 @@ export class AppComponent {
     this.router.events.subscribe(e => {
       if(e instanceof NavigationEnd) {
         console.log(e.url);
-        
-        if(e.url === '/login') {
+        if(e.url.includes('/login')) {
           this.hideNavbar = true
         } else {
           this.hideNavbar = false
