@@ -1,67 +1,5 @@
 <div class="page-dashboard">
   <h1>DASHBOARD</h1>
-  <div class="tables card">
-    <div class="table">
-      <div class="table-title">
-        <h2>PRÓXIMOS ATENDIMENTOS</h2>
-        <h3>TOTAL: {{ nextAgenda.length }}</h3>
-      </div>
-      @if (nextAgenda.length > 0) {
-      <table>
-        <thead>
-          <tr>
-            <th>Serviço</th>
-            <th>Cliente</th>
-            <th>Data</th>
-            <th>Horário</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of nextAgenda; track item) {
-            <tr>
-              <td>{{ item.servico.nome_servico }}</td>
-              <td>{{ item.pet.dono.nome }}</td>
-              <td>{{ formatDate(item.data_agendamento) }}</td>
-              <td>{{ formatHours(item.hora_agendamento) }}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    } @else {
-      <h3 style="text-align: center;">Nenhum agendamento futuro encontrado</h3>
-    }
-    </div>
-    <div class="table">
-      <div class="table-title">
-        <h2>ÚLTIMOS ATENDIMENTOS</h2>
-        <h3>TOTAL: {{ prevAgenda.length }}</h3>
-      </div>
-      @if (prevAgenda.length > 0) {
-        <table>
-          <thead>
-            <tr>
-              <th>Serviço</th>
-              <th>Cliente</th>
-              <th>Data</th>
-              <th>Horário</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (item of prevAgenda; track item) {
-            <tr>
-              <td>{{ item.servico.nome_servico }}</td>
-              <td>{{ item.pet.dono.nome }}</td>
-              <td>{{ formatDate(item.data_agendamento) }}</td>
-              <td>{{ formatHours(item.hora_agendamento) }}</td>
-            </tr>
-            }
-          </tbody>
-        </table>
-      } @else {
-        <h3 style="text-align: center;">Nenhum agendamento anterior encontrado</h3>
-      }
-    </div>
-  </div>
   <div class="usuarios card">
     <div class="title">
       <h2>USUÁRIOS CADASTRADOS</h2>
@@ -87,6 +25,149 @@
         <h3>{{ animal.tipo_animal }}</h3>
         <h3>{{ animal.total }}</h3>
       </div>
+      }
+    </div>
+  </div>
+  <div class="pets card">
+    <h2 class="title">PETS CADASTRADOS</h2>
+    <div class="pets-content">
+      <h2 class="total-pets">
+        {{ animaisTotal[0].total + animaisTotal[1].total }}
+      </h2>
+    </div>
+  </div>
+  <div class="tables card">
+    <div class="table">
+      <div class="table-title">
+        <h2>PRÓXIMOS ATENDIMENTOS</h2>
+        <h3>TOTAL: {{ nextAgenda.length }}</h3>
+      </div>
+      @if (nextAgenda.length > 0) {
+      <div class="atendimentos">
+        @for (item of nextAgenda; track $index) {
+        <div class="atendimento">
+          <div class="icon-pet">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#219799"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-paw-print h-6 w-6 text-primary"
+            >
+              <circle cx="11" cy="4" r="2"></circle>
+              <circle cx="18" cy="8" r="2"></circle>
+              <circle cx="20" cy="16" r="2"></circle>
+              <path
+                d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="nomes">
+            <h3 class="nome-pet">{{ item.pet.nome }}</h3>
+            <h4 class="nome-tutor">Tutor: {{ item.pet.dono.nome }}</h4>
+          </div>
+          <!-- <h3 class="data"></h3> -->
+          <div class="horario">
+            <h3 class="servico">{{ item.servico.nome_servico }}</h3>
+            <h4 class="hora">{{ formatDate(item.data_agendamento) }} - {{ formatHours(item.hora_agendamento) }}</h4>
+          </div>
+        </div>
+        }
+      </div>
+      <!-- <table>
+        <thead>
+          <tr>
+            <th>Serviço</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of nextAgenda; track item) {
+          <tr>
+            <td>{{ item.servico.nome_servico }}</td>
+            <td>{{ item.pet.dono.nome }}</td>
+            <td>{{ formatDate(item.data_agendamento) }}</td>
+            <td>{{ formatHours(item.hora_agendamento) }}</td>
+          </tr>
+          }
+        </tbody>
+      </table> -->
+      } @else {
+      <h3 style="text-align: center">Nenhum agendamento futuro encontrado</h3>
+      }
+    </div>
+    <div class="table">
+      <div class="table-title">
+        <h2>ÚLTIMOS ATENDIMENTOS</h2>
+        <h3>TOTAL: {{ prevAgenda.length }}</h3>
+      </div>
+      @if (prevAgenda.length > 0) {
+        <div class="atendimentos">
+
+          @for (item of prevAgenda; track $index) {
+            <div class="atendimento">
+          <div class="icon-pet">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#219799"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-paw-print h-6 w-6 text-primary"
+            >
+              <circle cx="11" cy="4" r="2"></circle>
+              <circle cx="18" cy="8" r="2"></circle>
+              <circle cx="20" cy="16" r="2"></circle>
+              <path
+                d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="nomes">
+            <h3 class="nome-pet">{{ item.pet.nome }}</h3>
+            <h4 class="nome-tutor">Tutor: {{ item.pet.dono.nome }}</h4>
+          </div>
+          <!-- <h3 class="data"></h3> -->
+          <div class="horario">
+            <h3 class="servico">{{ item.servico.nome_servico }}</h3>
+            <h4 class="hora">{{ formatDate(item.data_agendamento) }} - {{ formatHours(item.hora_agendamento) }}</h4>
+          </div>
+        </div>
+          }
+        </div>
+      <!-- <table>
+        <thead>
+          <tr>
+            <th>Serviço</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of prevAgenda; track item) {
+          <tr>
+            <td>{{ item.servico.nome_servico }}</td>
+            <td>{{ item.pet.dono.nome }}</td>
+            <td>{{ formatDate(item.data_agendamento) }}</td>
+            <td>{{ formatHours(item.hora_agendamento) }}</td>
+          </tr>
+          }
+        </tbody>
+      </table> -->
+      } @else {
+      <h3 style="text-align: center">Nenhum agendamento anterior encontrado</h3>
       }
     </div>
   </div>

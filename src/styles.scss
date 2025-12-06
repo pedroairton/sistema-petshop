@@ -55,10 +55,10 @@ a{
   display: none;
 }
 @media (max-width: 1024px){
-  .table{
-    overflow-x: scroll;
-    min-height: 150px;
-  }
+  // .table{
+  //   overflow-x: scroll;
+  //   min-height: 150px;
+  // }
   table{
     min-width: 650px;
   }

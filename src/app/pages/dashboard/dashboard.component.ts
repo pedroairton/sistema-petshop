@@ -9,7 +9,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class DashboardComponent implements OnInit {
   #apiService = inject(ApiService);
-  public usuariosTotal: number = 54;
+  public usuariosTotal: number = 1;
   public animaisTotal: any;
   public nextAgenda: any;
   public prevAgenda: any;
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     this.#apiService.getPetCount().subscribe(
       (response) => {
         this.animaisTotal = response;
-        console.log(response);
+        console.log('pets ',response);
         return response;
       },
       (err) => {
