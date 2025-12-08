@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  public name: string = 'Usuário';
+  public name: string = localStorage.getItem('auth_admin') ?? 'Usuário';
   public now: number = new Date().getHours();
   public message: string;
   public sidebar: boolean = true;

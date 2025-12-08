@@ -80,6 +80,16 @@ $lightBlue2: #60c1dc;
         flex-direction: column;
         gap: 2rem;
         .topo{
+          display: flex;
+          flex-direction: column;
+          svg{
+            cursor: pointer;
+            margin-left: auto;
+            transition: .3s;
+            &:hover{
+              transform: scale(1.1);
+            }
+          }
           .nome{
             
           }

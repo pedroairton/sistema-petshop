@@ -47,7 +47,7 @@ header {
       transition: 0.3s;
     }
     svg.ativo {
-      rotate: 90deg;
+      rotate: 180deg;
     }
   }
   .side-items {
@@ -69,6 +69,9 @@ header {
       h3 {
         font-weight: 400;
         font-size: 1.35rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
       &::before {
         bottom: 0;
@@ -92,5 +95,18 @@ header {
   }
   section{
     margin-top: 100px;
+  }
+}
+@media (max-width: 1024px) {
+  .sidebar{
+    width: 150px !important;
+    .side-items{
+      .item{
+        padding: 1rem 0.5rem;
+        h3{
+          font-size: 1.1rem;
+        }
+      }
+    }
   }
 }
