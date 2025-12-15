@@ -52,7 +52,7 @@ export class AuthService {
   }
   logout() {
     return this.http
-      .post(this.apiUrl + '/api/auth/logout', {}, { withCredentials: true })
+      .post(this.apiUrl + '/api/logout', {}, { withCredentials: true })
       .pipe(
         tap(() => {
           this.isAuthenticatedSubject.next(false);

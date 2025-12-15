@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +15,8 @@ export class NavbarComponent {
   public now: number = new Date().getHours();
   public message: string;
   public sidebar: boolean = true;
-  constructor() {
+  #authService = inject(AuthService)
+  constructor(private router: Router) {
     this.message = this.greeting();
   }
   greeting() {
@@ -29,5 +32,18 @@ export class NavbarComponent {
   }
   toggleSidebar() {
     this.sidebar ? (this.sidebar = false) : (this.sidebar = true);
+  }
+  logout(){
+    this.#authService.logout().subscribe(
+      {
+        next: () => {
+          alert("Logout realizado")
+          this.router.navigate(['/login'])
+        },
+        error: (err) => {
+          console.error('Erro ao fazer loout', err);
+        }
+      }
+    )
   }
 }
