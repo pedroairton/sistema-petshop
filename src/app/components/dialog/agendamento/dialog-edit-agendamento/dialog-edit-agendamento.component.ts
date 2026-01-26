@@ -36,6 +36,7 @@ export class DialogEditAgendamentoComponent implements OnInit{
   ) {
     console.log('data: ', this.data);
     this.form = this.fb.group({
+      status: [this.data.agendamento.status],
       data_agendamento: [
         this.data.agendamento.data_agendamento,
         Validators.required,

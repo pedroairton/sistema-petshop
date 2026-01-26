@@ -125,6 +125,19 @@ export class ApiService {
       this.apiUrl + '/api/servico/' + idServico + '/delete'
     );
   }
+  deletaUsuario(idUsuario: number) {
+    return this.http.delete(
+      this.apiUrl + '/api/usuarios/' + idUsuario + '/delete'
+    );
+  }
+  deletaPet(idPet: number) {
+    return this.http.delete(this.apiUrl + '/api/pet/' + idPet + '/delete');
+  }
+  deletaAgendamento(idAgendamento: number) {
+    return this.http.delete(
+      this.apiUrl + '/api/agendamento/' + idAgendamento + '/delete'
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

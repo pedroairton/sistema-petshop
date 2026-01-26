@@ -48,16 +48,33 @@ export class AgendaComponent implements OnInit {
       }
     );
   }
+  deleteAgendamento(id: number) {
+    if (window.confirm('Deseja deletar este agendamento?')) {
+      this.#apiService.deletaAgendamento(id).subscribe(
+        (response) => {
+          console.log(response);
+          window.alert('Agendamento deletado com sucesso!');
+          this.loadAgenda();
+        },
+        (err) => {
+          console.error('Erro: ', err);
+          window.alert('Erro ao deletar agendamento!');
+        }
+      );
+    }
+  }
   marcaConcluido(idItem: number) {
     if (window.confirm('Deseja marcar este agendamento como concluído ?')) {
       console.log('Confirmou o id:', idItem);
       this.#apiService.concluiAgendamento(idItem).subscribe(
         (response) => {
           console.log(response);
+          window.alert('Agendamento marcado como concluído com sucesso!');
           this.loadAgenda();
         },
         (err) => {
           console.error('Erro: ', err);
+          window.alert('Erro ao marcar agendamento como concluído!');
         }
       );
     } else {

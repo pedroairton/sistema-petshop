@@ -32,7 +32,7 @@ export class UsuariosComponent implements OnInit {
     telefone: new FormControl('', Validators.required),
     endereco: new FormControl('', Validators.required),
   });
-  constructor(private dialog: MatDialog){}
+  constructor(private dialog: MatDialog) {}
 
   submitUser() {
     if (this.form.valid) {
@@ -45,21 +45,21 @@ export class UsuariosComponent implements OnInit {
         },
         (error) => {
           console.error('Erro:', error);
-        }
+        },
       );
     } else {
       console.log('Form inválido');
     }
   }
   openDialogEdit(usuario: any) {
-    this.dialog.open(DialogEditUsuarioComponent, {
+    (this.dialog.open(DialogEditUsuarioComponent, {
       data: { usuario },
     }),
       {
         minWidth: '1100px',
         maxWidth: '100%',
         width: '1600px',
-      };
+      });
   }
   public usuarios: Usuario[] = [];
   public indexUsuarios: boolean = true;
@@ -74,7 +74,7 @@ export class UsuariosComponent implements OnInit {
       },
       (err) => {
         console.error('Erro:', err);
-      }
+      },
     );
   }
   filterUser(event: Event): void {
@@ -89,7 +89,21 @@ export class UsuariosComponent implements OnInit {
         },
         (err) => {
           console.error('Erro:', err);
-        }
+        },
+      );
+    }
+  }
+  deleteUser(idUsuario: number) {
+    if (confirm('Deseja realmente excluir este usuário e seus pets?')) {
+      this.#apiService.deletaUsuario(idUsuario).subscribe(
+        (response) => {
+          console.log('Usuário excluído com sucesso', response);
+          window.alert('Usuário excluído com sucesso');
+          this.loadUsers();
+        },
+        (err) => {
+          console.error('Erro:', err);
+        },
       );
     }
   }

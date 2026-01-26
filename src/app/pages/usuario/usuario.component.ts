@@ -41,36 +41,39 @@ export class UsuarioComponent implements OnInit {
     raca: new FormControl('', Validators.required),
   });
 
-  constructor(private dialog: MatDialog, private route: ActivatedRoute) {}
+  constructor(
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+  ) {}
   openDialog(idPet: number) {
-    this.dialog.open(DialogAtendimentosPetComponent, {
+    (this.dialog.open(DialogAtendimentosPetComponent, {
       data: { id: idPet },
     }),
       {
         minWidth: '1100px',
         maxWidth: '100%',
         width: '1600px',
-      };
+      });
   }
   openDialogAgenda(idPet: number) {
-    this.dialog.open(DialogAgendarPetComponent, {
+    (this.dialog.open(DialogAgendarPetComponent, {
       data: { id: idPet },
     }),
       {
         minWidth: '1100px',
         maxWidth: '100%',
         width: '1600px',
-      };
+      });
   }
   openDialogEdit(pet: any) {
-    this.dialog.open(DialogEditPetComponent, {
+    (this.dialog.open(DialogEditPetComponent, {
       data: { pet },
     }),
       {
         minWidth: '1100px',
         maxWidth: '100%',
         width: '1600px',
-      };
+      });
   }
   public indexUsuarios: boolean = true;
   toggleUsuarios(value: boolean) {
@@ -96,13 +99,13 @@ export class UsuarioComponent implements OnInit {
               },
               (error) => {
                 console.error('Erro:', error);
-              }
+              },
             );
           }
         },
         (error) => {
           console.error('Erro:', error);
-        }
+        },
       );
     }
   }
@@ -110,17 +113,20 @@ export class UsuarioComponent implements OnInit {
     this.route.paramMap.subscribe((par: any) => {
       this.id = par.get('id') || NaN;
       if (this.id) {
-        this.#apiService.getUsuario(this.id).subscribe(
-          (response) => {
-            this.dados = response;
-            console.log(this.dados);
-          },
-          (error) => {
-            console.error('Erro:', error);
-          }
-        );
+        this.loadUsuario(this.id);
       }
     });
+  }
+  loadUsuario(id: any) {
+    this.#apiService.getUsuario(id).subscribe(
+      (response) => {
+        this.dados = response;
+        console.log(this.dados);
+      },
+      (error) => {
+        console.error('Erro:', error);
+      },
+    );
   }
   calcularIdade(dataNascimento: string): string {
     const hoje = new Date();
@@ -164,5 +170,19 @@ export class UsuarioComponent implements OnInit {
     }
 
     return `${idadeAnos} ${idadeAnos === 1 ? 'ano' : 'anos'}`;
+  }
+  deletePet(idPet: number) {
+    if (confirm('Deseja realmente excluir este pet?')) {
+      this.#apiService.deletaPet(idPet).subscribe(
+        (response) => {
+          console.log('Pet excluído com sucesso', response);
+          window.alert('Pet excluído com sucesso');
+          this.loadUsuario(this.id);
+        },
+        (err) => {
+          console.error('Erro:', err);
+        },
+      );
+    }
   }
 }
