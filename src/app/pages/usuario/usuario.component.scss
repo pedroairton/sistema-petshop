@@ -28,21 +28,116 @@ $lightBlue2: #60c1dc;
     .table {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      // align-items: flex-end;
       padding: 2rem;
       border-radius: 15px;
       background-color: #f0f0f0;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       margin-top: 2rem;
-      .guia{
+      .guia {
         display: flex;
         align-items: center;
         gap: 1.5rem;
         margin-bottom: 1rem;
-        .item{
+        .item {
           display: flex;
           align-items: center;
           gap: 5px;
+        }
+      }
+      .pets {
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        .pet {
+          width: 280px;
+          background-color: white;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          border-radius: 10px;
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          svg{
+            margin-left: auto;
+            cursor: pointer;
+            transition: .3s;
+            &:hover{
+              transform: scale(1.1);
+            }
+          }
+          .nome {
+            display: flex;
+            flex-direction: column;
+            svg {
+              cursor: pointer;
+              margin-left: auto;
+              transition: 0.3s;
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+          }
+          .detalhes{
+            border-top: solid 1px #dadada;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            .detalhe{
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+          .btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            a {
+              width: 100%;
+            }
+            button {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5px;
+              cursor: pointer;
+              width: 100%;
+              border-radius: 4px;
+              font-weight: 700;
+              height: 35px;
+              border: none;
+              transition: 0.3s;
+            }
+            .btn-agendar {
+              background-color: #f0f0f0;
+              border: solid 1px #219799;
+              color: #219799;
+              &:hover {
+                background-color: #219799;
+                color: white;
+              }
+            }
+            .btn-agendamentos {
+              background-color: #f0f0f0;
+              border: solid 1px #219799;
+              color: #219799;
+              &:hover {
+                background-color: #219799;
+                color: white;
+              }
+            }
+            .btn-edit {
+              background-color: #f0f0f0;
+              border: solid 1px green;
+              color: green;
+              &:hover {
+                background-color: green;
+                color: white;
+              }
+            }
+          }
         }
       }
       table {
@@ -124,6 +219,54 @@ $lightBlue2: #60c1dc;
     .ativo {
       display: flex;
       rotate: 0deg;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .page-pet {
+    padding: 50px;
+    .content-usuarios {
+      .table {
+        table {
+          min-width: 750px;
+          thead {
+            tr {
+              th {
+                min-width: 70px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 580px) {
+  .page-pet {
+    padding: 1rem;
+    .content-usuario {
+      .table {
+        .pets{
+          justify-content: center;
+        }
+      }
+      .index-usuario {
+        h2 {
+          padding: 1rem 5px;
+          font-size: 1.25rem;
+        }
+      }
+      .usuario {
+        justify-content: center;
+        padding: 1rem;
+        .usuario {
+        }
+      }
+      .filtro-busca {
+        input[type="text"] {
+          width: 200px;
+        }
+      }
     }
   }
 }

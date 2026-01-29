@@ -153,3 +153,42 @@ $lightBlue2: #60c1dc;
     }
   }
 }
+@media (max-width: 1024px) {
+  .page-servicos {
+    .content-servicos{
+      .index-servicos{
+        h2{
+          padding: 2rem 1rem;
+        }
+      }
+    }
+    .tabela {
+      width: 100%;
+      overflow: scroll;
+      table {
+        min-width: 670px;
+      }
+    }
+  }
+}
+@media (max-width: 580px) {
+  .page-servicos {
+    padding: 1rem;
+    .content-servicos{
+      .table{
+        .guia{
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      .index-servicos{
+        h2{
+          font-size: 1.25rem;
+        }
+      }
+    }
+    .table-servicos {
+      padding: 1rem;
+    }
+  }
+}

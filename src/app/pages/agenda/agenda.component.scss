@@ -1,30 +1,32 @@
-.page-agendamentos{
-    padding: 80px;
+.page-agendamentos {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  .table-agendamentos {
     display: flex;
     flex-direction: column;
-    gap: 100px;
-    .table-agendamentos{
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 2rem;
+    .guia {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 2rem;
-      padding: 2rem;
-      border-radius: 15px;
-      background-color: white;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      margin-top: 2rem;
-      .guia{
+      align-self: flex-end;
+      gap: 1.5rem;
+      // margin-bottom: 1rem;
+      .item {
         display: flex;
         align-items: center;
-        align-self: flex-end;
-        gap: 1.5rem;
-        // margin-bottom: 1rem;
-        .item{
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
+        gap: 5px;
       }
+    }
+    .table {
+      overflow: scroll;
       table {
         width: 100%;
         thead {
@@ -43,10 +45,10 @@
               font-size: 1.15rem;
               padding: 8px 0;
               text-align: center;
-              svg{
+              svg {
                 cursor: pointer;
-                transition: .3s;
-                &:hover{
+                transition: 0.3s;
+                &:hover {
                   scale: 1.1;
                 }
               }
@@ -60,3 +62,25 @@
       }
     }
   }
+}
+@media (max-width:1024px) {
+  .page-agendamentos{
+    .table-agendamentos{
+      .table{
+        width: 100%;
+        overflow: scroll;
+        table{
+          min-width: 670px;
+        }
+      }
+    }
+  }
+};
+@media (max-width: 580px){
+  .page-agendamentos{
+    padding: 1rem;
+    .table-agendamentos{
+      padding: 1rem;
+    }
+  }
+}

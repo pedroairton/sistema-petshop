@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -11,13 +11,17 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  public name: string = localStorage.getItem('auth_admin') ?? 'Usuário';
+  public name: string = '';
   public now: number = new Date().getHours();
   public message: string;
   public sidebar: boolean = true;
   #authService = inject(AuthService)
+  isPlatformBrowser: boolean = inject(PLATFORM_ID) === 'browser';
   constructor(private router: Router) {
     this.message = this.greeting();
+    if(this.isPlatformBrowser){
+      this.name = localStorage.getItem('auth_admin') ?? 'Usuário';
+    }
   }
   greeting() {
     if (this.now <= 12 && this.now >= 5) {

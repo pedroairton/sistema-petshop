@@ -72,29 +72,31 @@ export class ServicosComponent implements OnInit {
     }
   }
   changeStatusServico(idServico: number){   
-    confirm("Deseja alterar o status desse serviço ?") 
-    this.#apiService.mudaStatusServico(idServico).subscribe(
-      response => {
-        console.log(response);
-        alert(response)
-        this.loadServicosCount()
-      } , err => {
-        console.error('Erro: ', err);
-        
-      }
-    )
+    if(confirm("Deseja alterar o status desse serviço ?") ){
+      this.#apiService.mudaStatusServico(idServico).subscribe(
+        response => {
+          console.log(response);
+          alert(response)
+          this.loadServicosCount()
+        } , err => {
+          console.error('Erro: ', err);
+          
+        }
+      )
+    }
   }
   deleteServico(idServico: number){
-    confirm("Deseja deletar esse serviço ? Essa decisão é irreversível")
-    this.#apiService.deletaServico(idServico).subscribe(
-      response => {
-        console.log(response);
-        alert("Serviço deletado com sucesso")
-        this.loadServicosCount()
-      }, err => {
-        console.error('Erro: ', err);
-      }
-    )
+    if(confirm("Deseja deletar esse serviço ? Essa decisão é irreversível")){
+      this.#apiService.deletaServico(idServico).subscribe(
+        response => {
+          console.log(response);
+          alert("Serviço deletado com sucesso")
+          this.loadServicosCount()
+        }, err => {
+          console.error('Erro: ', err);
+        }
+      )
+    }
   }
   ngOnInit(): void {
     this.loadServicosCount();
