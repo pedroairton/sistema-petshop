@@ -15,6 +15,11 @@ $lightBlue2: #60c1dc;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    .table{
+      .tabela{
+        width: 100%;
+      }
+    }
     .card {
       border-radius: 15px;
       background-color: #f0f0f0;
